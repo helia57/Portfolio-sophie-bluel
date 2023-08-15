@@ -1,36 +1,41 @@
-    
-    // création de la section dynamique du site 
-    // Récupération de l'élément du DOM qui accueillera les projets
+    //************************************************/
+    //* création de la section dynamique du site     */
+    //************************************************/
+
+    // Récupération de l'élément du DOM qui accueillera les projets: <section id = "portfolio">
     let baliseSectionPortfolio = document.getElementById("portfolio");
-      
+    // création du titre en mode dynamique, et 2 div 
     let titreGallery = document.createElement("h2");        //  <h2>
     let baliseDivFilterBar = document.createElement("div"); //  <div class="filterBar">
+    let bouton
     let baliseDivGallery = document.createElement("div");   //  <div class="photoGallery">
     
                      
         // creation du titre de section
-            titreGallery.innerText = "Mes projets";
-            baliseSectionPortfolio.appendChild(titreGallery);
-        // creation div pour bouton filtre dans la balise section#portfolio
-            baliseDivFilterBar.classList = "filterBar";
-            baliseSectionPortfolio.appendChild(baliseDivFilterBar);
-        // creation div pour les cards projets
+    titreGallery.innerText = "Mes projets";
+    baliseSectionPortfolio.appendChild(titreGallery);
+        // creation <div> pour bouton filtre dans la balise section#portfolio
+    baliseDivFilterBar.classList = "filterBar";          //<div class="filterBar"></div>
+    baliseSectionPortfolio.appendChild(baliseDivFilterBar);
+        // creation div pour tous les projets
+    baliseDivGallery.classList = "photoGallery";        //<div class="photoGallery"></div>
+    baliseSectionPortfolio.appendChild(baliseDivGallery);
            
-            baliseDivGallery.classList = "photoGallery";
-            baliseSectionPortfolio.appendChild(baliseDivGallery);
            
-           
-            console.log(document)
-
+    console.log(document)
+/*************************************************** */
 /** Crée une fiche projet avec une image, un titre
 /* @param { {image:imageUrl, title: string}} works
 /* @ return {HTMLElement}
-/*/        
-async function createProject(work)   {
+/*************************************************** */        
+async function createProject(works)   {
 
-    for (let i = 0; i < work.length; i++) {
-        const projet = work[i] 
+    for (let i = 0; i < works.length; i++) {
+        const projet = works[i] 
+    console.log(projet)
+   
        
+    
     //fiche projet dans une figure
     let baliseFigure = document.createElement("figure");
     baliseFigure.classList = "projets";
@@ -41,20 +46,21 @@ async function createProject(work)   {
     imageElement.src = projet.imageUrl;
     imageElement.setAttribut = "alt", "image du rendu du projet ${works.title}"
     imageElement.innerText = projet.imageUrl ?? "image bientôt disponible";  // si pas d'image, return "image bientôt disponible"
-    baliseDivGallery.appendChild(imageElement);
+    baliseFigure.appendChild(imageElement);
       
     // un texte
-    let textCardElement = document.createElement("p");  
+    let textCardElement = document.createElement("figcaption");  
     textCardElement.innerText = projet.title;
     textCardElement.innerText = projet.title ?? "description bientôt disponible"; // si pas de titre au projet, return "description bientôt disponible"
-    baliseDivGallery.appendChild(textCardElement);
+    baliseFigure.appendChild(textCardElement);
     
-
+    }
     return 
-}
+
 }    
-         // Récupération des projets depuis l'API  
-        
+ /************************************************ */   
+//* Récupération des projets depuis l'API  
+ /************************************************ */       
 
 
 async function genererWorks () { 
@@ -76,12 +82,9 @@ async function genererWorks () {
     }
 
         const works = await response.json()
-        console.log(works)
-        console.log(response)
         loader.remove ()
-        for (let work of works) {
-            wrapper.append(createProject(works))
-        }
+        wrapper.append(createProject(works))
+        
         console.log(works)
     } catch (erreur) {
         loader.innertext = ("impossible de charger le contenu")
