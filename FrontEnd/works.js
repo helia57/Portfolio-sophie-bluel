@@ -7,7 +7,6 @@
     // création du titre en mode dynamique, et 2 div 
     let titreGallery = document.createElement("h2");        //  <h2>
     let baliseDivFilterBar = document.createElement("div"); //  <div class="filterBar">
-    let bouton
     let baliseDivGallery = document.createElement("div");   //  <div class="photoGallery">
     
                      
@@ -15,26 +14,47 @@
     titreGallery.innerText = "Mes projets";
     baliseSectionPortfolio.appendChild(titreGallery);
         // creation <div> pour bouton filtre dans la balise section#portfolio
-    baliseDivFilterBar.classList = "filterBar";          //<div class="filterBar"></div>
-    baliseSectionPortfolio.appendChild(baliseDivFilterBar);
+    baliseDivFilterBar.classList = "filterBar";                     //<div class="filterBar"></div>
+    baliseSectionPortfolio.appendChild(baliseDivFilterBar);         //section portfolio parent de div filterBar
         // creation div pour tous les projets
-    baliseDivGallery.classList = "photoGallery";        //<div class="photoGallery"></div>
-    baliseSectionPortfolio.appendChild(baliseDivGallery);
-           
+    baliseDivGallery.classList = "photoGallery";                    //<div class="photoGallery"></div>
+    baliseSectionPortfolio.appendChild(baliseDivGallery);           //section portfolio parent de div gallery
+
+        // creation 4 boutons filtres par catégories
+    
+    let boutonTous = document.createElement("button")       //  <button class="tous">
+    boutonTous.textContent = "tous";
+    boutonTous.id =("btnTous");
+    baliseDivFilterBar.appendChild(boutonTous);
+
+    let boutonObjets = document.createElement("button")     //  <button class="Objets">
+    boutonObjets.textContent = "Objets";
+    boutonObjets.id =("btnObjets");
+    baliseDivFilterBar.appendChild(boutonObjets);
+
+    let boutonAppartements = document.createElement("button") //  <button class="Appartement">
+    boutonAppartements.textContent = "Appartements";
+    boutonAppartements.id =("btnAppart");
+    baliseDivFilterBar.appendChild(boutonAppartements);
+
+    let boutonHotelEtRestaurants = document.createElement("button") //  <button class="Hotels et restaurants">
+    boutonHotelEtRestaurants.textContent = "Hôtels & restaurants";
+    boutonHotelEtRestaurants.id =("btnHotel");
+    baliseDivFilterBar.appendChild(boutonHotelEtRestaurants);       
            
     console.log(document)
 /*************************************************** */
 /** Crée une fiche projet avec une image, un titre
 /* @param { {image:imageUrl, title: string}} works
 /* @ return {HTMLElement}
-/*************************************************** */        
+/*************************************************** */   
+
+
 async function createProject(works)   {
 
     for (let i = 0; i < works.length; i++) {
         const projet = works[i] 
-    console.log(projet)
-   
-       
+        
     
     //fiche projet dans une figure
     let baliseFigure = document.createElement("figure");
@@ -63,7 +83,7 @@ async function createProject(works)   {
  /************************************************ */       
 
 
-async function genererWorks () { 
+async function genererGetWorks () { 
     const wrapper = document.querySelector(".photoGallery");
     const loader = document.createElement("p");
     loader.innertext = "chargement..." 
@@ -81,11 +101,12 @@ async function genererWorks () {
         throw new Error(`Erreur serveur`);
     }
 
-        const works = await response.json()
+        works = await response.json()
         loader.remove ()
         wrapper.append(createProject(works))
+        wrapper.append(trierParCategoryId(works))
+              
         
-        console.log(works)
     } catch (erreur) {
         loader.innertext = ("impossible de charger le contenu")
         loader.style.color = "red"
@@ -93,5 +114,49 @@ async function genererWorks () {
     }
     return 
 }
-                     
-genererWorks();
+                      
+genererGetWorks();
+
+let worksCategorieTous
+let worksCategoryObjet
+let worksCategoryAppart 
+let worksCategoryHotel
+// trie le tableau works par categorieID et return un tableau trié de chaque categorie dans une nouvelle constante
+async function trierParCategoryId(works) {
+    worksCategorieTous = works
+    console.log(worksCategorieTous)                                                     // toute les categories et celles qui n'ont pas d'id categorie
+
+    worksCategoryObjet = works.filter(works => works.categoryId===1);       // categorie objet
+    console.log(worksCategoryObjet)
+       
+    worksCategoryAppart = works.filter(works => works.categoryId===2);      // categorie Appartement
+    console.log(worksCategoryAppart)
+
+    worksCategoryHotel = works.filter(works => works.categoryId===3);       // categorie hotels et restaurants
+    console.log(worksCategoryHotel)
+} 
+trierParCategoryId;
+
+
+
+ 
+
+    boutonTous.addEventListener("click", function () {
+        document.querySelector(".photoGallery").innerHTML = "";
+        createProject (worksCategorieTous.works)
+        });
+        
+    boutonObjets.addEventListener("click", function () {
+        document.querySelector(".photoGallery").innerHTML = "";
+        createProject (worksCategoryObjet.works)
+        });  
+        
+    boutonAppartements.addEventListener("click", function () {
+        document.querySelector(".photoGallery").innerHTML = "";
+        createProject (worksCategoryAppart.works)
+        }); 
+    boutonHotelEtRestaurants.addEventListener("click", function () {
+        document.querySelector(".photoGallery").innerHTML = "";
+        createProject (worksCategoryHotel.works)
+        });    
+       

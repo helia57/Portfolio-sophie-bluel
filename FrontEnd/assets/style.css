@@ -75,7 +75,7 @@ h1 > span {
 	font-family: 'Work Sans';
 	font-size:10px;
 	letter-spacing: 0.1em;
-;
+
 }
 
 h2{
@@ -188,4 +188,51 @@ footer nav ul {
 #text {
 	visibility: hidden;
 	display: none;
+}
+button {
+	font-family: 'Syne';
+	font-weight: 700;
+	background-color: white;
+	height: 37px;
+	text-align: center;
+	border-radius: 60px;
+	border: 1px solid #1D6154;
+	color:#1D6154;
+	font-size: 16px;
+	font-style: normal;
+}
+button:hover, button:active {
+	background-color: #1D6154;
+	border: 1px solid #1D6154;
+	color:aliceblue;
+	cursor: pointer;
+}	
+div.filterBar {
+	display: flex;
+	width: 100%;
+	padding: 0px 200px;
+	gap:10px;
+	justify-items: center;
+	margin: 50px 35px;
+}
+#btnTous {
+	
+	width: 100px;
+	padding: 9px 15px;
+}
+#btnObjets {
+	width: 130px;
+	padding: 9px 15px;
+}
+#btnAppart {
+	width: 187px;
+	padding: 9px 15px;
+}
+#btnHotel {
+	width: 220px;
+	padding: 9px 15px;
+}
+#insta {
+	width: 22px;
+	height: 22px;
 }
