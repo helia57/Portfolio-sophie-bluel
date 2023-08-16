@@ -103,7 +103,6 @@ async function genererGetWorks () {
 
         works = await response.json()
         loader.remove ()
-       
         wrapper.append(trierParCategoryId(works))
               
         
