@@ -50,10 +50,10 @@
 /*************************************************** */   
 
 
-async function createProject(works)   {
+async function createProject(argument)   {
 
-    for (let i = 0; i < works.length; i++) {
-        const projet = works[i] 
+    for (let i = 0; i < argument.length; i++) {
+        const projet = argument[i] 
         
     
     //fiche projet dans une figure
@@ -103,7 +103,7 @@ async function genererGetWorks () {
 
         works = await response.json()
         loader.remove ()
-        wrapper.append(createProject(works))
+       
         wrapper.append(trierParCategoryId(works))
               
         
@@ -134,29 +134,26 @@ async function trierParCategoryId(works) {
 
     worksCategoryHotel = works.filter(works => works.categoryId===3);       // categorie hotels et restaurants
     console.log(worksCategoryHotel)
-} 
-trierParCategoryId;
-
-
-
- 
-
+    // tous les projets affichés au chargements de la page
+    createProject (works)
+    // remise à zero de la page et affichage du trie lorsque j'appuie sur le bouton
     boutonTous.addEventListener("click", function () {
         document.querySelector(".photoGallery").innerHTML = "";
-        createProject (worksCategorieTous.works)
+        createProject (worksCategorieTous)
         });
         
     boutonObjets.addEventListener("click", function () {
         document.querySelector(".photoGallery").innerHTML = "";
-        createProject (worksCategoryObjet.works)
+        createProject (worksCategoryObjet)
         });  
         
     boutonAppartements.addEventListener("click", function () {
         document.querySelector(".photoGallery").innerHTML = "";
-        createProject (worksCategoryAppart.works)
+        createProject (worksCategoryAppart)
         }); 
     boutonHotelEtRestaurants.addEventListener("click", function () {
         document.querySelector(".photoGallery").innerHTML = "";
-        createProject (worksCategoryHotel.works)
+        createProject (worksCategoryHotel)
         });    
        
+    }
