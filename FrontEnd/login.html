@@ -9,32 +9,32 @@
 		<link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Work+Sans&display=swap" rel="stylesheet">
 		
 		<link rel="stylesheet" href="./assets/style.css">
-		
+		<script src="login.js" defer ></script>
 	</head>
     <body>
         <header>
         <h1>Sophie Bluel <span>Architecte d'intérieur</span></h1>
         <nav>
             <ul>
-                <li>projets</li>
-                <li>contact</li>
+                <a href=" ./index.html"><li>projets</li></a>
+                <a href="./index.html#mon-ancre"><li>contact</li></a>
                 <li><b>login</b></li>
-                <li><img id="insta" src="./assets/icons/instagram.png" alt="Instagram"></li>
+                <a href="https://www.instagram.com" target="_blank"<li><img id="insta" src="./assets/icons/instagram.png" alt="Instagram"></li></a>
             </ul>
         </nav>
         </header>
         <main>
             <section class="log-in">
+                <p class="popup"></p>
                 <h3 id="login">log In</h3>
                 <form id ="formulaire2" action="#" method="post">
 					<label for="email">Email</label>
 					<input type="email" name="email" id="email">
 					<label for="name">Mot de passe</label>
-					<input type="password" name="password" id="mot-de-passe">
-					<input id="bouton-envoyer" type="submit" value="Envoyer">
-                    <a id="oublier" href="#">Mot de passe oublié</a>
+					<input type="Password" name="Password" id="Password">
+					<input id="bouton-envoyer" type="submit" value="Se connecter">
+                    <a  href="#" id="oublier" >Mot de passe oublié</a>
 				</form>
-               
             </section>
         </main>
         <footer>
