@@ -2,37 +2,40 @@
 <html lang="fr">
 	<head>
 		<meta charset="UTF-8">
-		<title>Sophie Bluel - Architecte d'intérieur</title>
+		<title>Sophie Bluel - Architecte d'intérieur_login</title>
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<link rel="preconnect" href="https://fonts.googleapis.com">
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 		<link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Work+Sans&display=swap" rel="stylesheet">
-		
+		<meta name="description" content="">
+       
 		<link rel="stylesheet" href="./assets/style.css">
-		<script src="login.js" defer ></script>
+        <script src="login.js" defer></script> 
+        
+        
 	</head>
     <body>
         <header>
         <h1>Sophie Bluel <span>Architecte d'intérieur</span></h1>
         <nav>
-            <ul>
-                <a href=" ./index.html"><li>projets</li></a>
-                <a href="./index.html#mon-ancre"><li>contact</li></a>
-                <li><b>login</b></li>
-                <a href="https://www.instagram.com" target="_blank"<li><img id="insta" src="./assets/icons/instagram.png" alt="Instagram"></li></a>
-            </ul>
+            <div>
+                <a href=" ./index.html"><h4>projets</h4></a>
+                <a href="./index.html#mon-ancre"><h4>contact</h4></a>
+                <h4><b>login</b></h4>
+                <a href="https://www.instagram.com" target="_blank"><div><img id="insta" src="./assets/icons/instagram.png" alt="Instagram"></div></a>
+            </div>
         </nav>
         </header>
         <main>
-            <section class="log-in">
-                <p class="popup"></p>
+            <section class="loguin">
+                <div class="popup"></div>
                 <h3 id="login">log In</h3>
-                <form id ="formulaire2" action="#" method="post">
+                <form id ="formulaire2" action="" method="post">
 					<label for="email">Email</label>
-					<input type="email" name="email" id="email">
-					<label for="name">Mot de passe</label>
-					<input type="Password" name="Password" id="Password">
-					<input id="bouton-envoyer" type="submit" value="Se connecter">
+					<input type="email" name="email" id="email" autocomplete="email" requiered>    
+					<label for="password">Mot de passe</label>
+					<input type="password" name="password" id="password" autocomplete="current-password" requiered>
+					<input id="seConnecter" type="submit" value="Se connecter" autocomplete="off">
                     <a  href="#" id="oublier" >Mot de passe oublié</a>
 				</form>
             </section>

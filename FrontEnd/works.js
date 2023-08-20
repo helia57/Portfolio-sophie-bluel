@@ -1,3 +1,6 @@
+
+    
+    
     //************************************************/
     //* création de la section dynamique du site     */
     //************************************************/
@@ -122,17 +125,14 @@ let worksCategoryAppart
 let worksCategoryHotel
 // trie le tableau works par categorieID et return un tableau trié de chaque categorie dans une nouvelle constante
 async function trierParCategoryId(works) {
-    worksCategorieTous = works
-    console.log(worksCategorieTous)                                                     // toute les categories et celles qui n'ont pas d'id categorie
-
+    worksCategorieTous = works                      // toute les categories et celles qui n'ont pas d'id categorie
+    
     worksCategoryObjet = works.filter(works => works.categoryId===1);       // categorie objet
-    console.log(worksCategoryObjet)
-       
+     
     worksCategoryAppart = works.filter(works => works.categoryId===2);      // categorie Appartement
-    console.log(worksCategoryAppart)
-
+   
     worksCategoryHotel = works.filter(works => works.categoryId===3);       // categorie hotels et restaurants
-    console.log(worksCategoryHotel)
+   
     // tous les projets affichés au chargements de la page
     createProject (works)
     // remise à zero de la page et affichage du trie lorsque j'appuie sur le bouton

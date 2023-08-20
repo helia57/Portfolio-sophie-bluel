@@ -86,21 +86,21 @@ h2{
 	font-size: 30px;
 	color: #1D6154
 }
-nav ul {
+nav div {
 	display: flex;
 	align-items: center;
 	list-style-type: none;
 
 }
-nav li {
+nav h4 {
 	padding: 0 10px;
 	font-size: 1.2em;
 }
 
-li:hover {
+h4:hover {
 	color: #B1663C;
 }
-b.li {
+b.h4 {
 	color: #000;
 	text-align: center;
 	font-family: Work Sans;
@@ -191,7 +191,7 @@ input[type="submit"]{
 	font-weight: 700;
 	color: white;
 	background-color: #1D6154;
-	margin : 2em 90px;
+	margin : 2em 105px;
 	width: 180px;
 	height: 36px;
 	text-align: center;
@@ -201,7 +201,7 @@ input[type="submit"]{
 	width: 180px;
 	height: 36px;
 }
-footer nav ul {
+footer nav div {
 	display: flex;
 	justify-content: flex-end;
 	margin: 2em
@@ -271,7 +271,7 @@ div.filterBar {
 	height: 36px;
 	width: 90%;
 }
-.log-in {
+.loguin {
 	display:flex;
 	flex-direction: column;
 	justify-content: center;
@@ -284,6 +284,7 @@ div.filterBar {
 	flex-direction: column;
 	width: 100%;
 	gap: 10px;
+	justify-content: center;
 }
 #email {
 	justify-content: center;
@@ -299,7 +300,7 @@ div.filterBar {
 	background: #FFF;
 	box-shadow: 0px 4px 14px 0px rgba(0, 0, 0, 0.09);
 }
-#mot-de-passe {
+#password {
 	justify-content: center;
 	align-items: center;
 	width: 379px;
@@ -313,7 +314,7 @@ div.filterBar {
 	background: #FFF;
 	box-shadow: 0px 4px 14px 0px rgba(0, 0, 0, 0.09);
 }
-#bouton-envoyer.imput {
+#seConnecter.imput {
 	height: 36px;
 	width: 179px;
 	margin: 1em;
@@ -338,14 +339,14 @@ div.filterBar {
 }
 .popup p {
 	display: flex;
-	height: 21px;
-	width: 380px;
-	background-color: antiquewhite;
-	box-shadow: 0px 4px 14px 0px rgba(0, 0, 0, 0.09);
+	height: 30px;
+	width: 100%;
+	background-color: white;
 	color: crimson;
 	font-size: 16px;
 	font-weight: 600;
 	justify-content: center;
+	font-family: Work Sans;
 }
 .popup {
 	display: flex;

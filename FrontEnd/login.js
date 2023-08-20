@@ -1,113 +1,48 @@
+//point d'entrée du formulaire de connexion au serveur
+const form = document.querySelector("#formulaire2");
+//point d'entrée et structure messages erreurs  
+const popup = document.querySelector(".popup");
+const error = document.createElement("p");
+popup.append(error);
 
-
-
-/***************************************************************************************
- * Cette fonction permet de récupérer les informations dans le formulaire
- * de la popup de partage et d'appeler l'affichage de l'email avec les bons paramètres.
- * @param {string} email 
- *//************************************************************************************/
-function gererFormulaire(email, password) {
-    try {
-        let baliseEmail = document.getElementById("email")
-        let email = baliseEmail.value
-        validerEmail(email)
-    
-        let balisePassword = document.getElementById("password")
-        let password = balisePassword.value
-        validerPassword(password)
-        afficherMessageErreur("connexion réussi, veuillez patienter...")
-        seLoguer(email, password)
-
-    } catch(erreur) {
-        afficherMessageErreur("erreur.message")
-    }
-    
-    }
-/**********************************************************************
- * Cette fonction prend un password en paramètre et valide qu'il est au bon format
- * ici : quatre caractères au minimum
- * @param {string} password
- * @throws {Error}
- *//***************************************************************** */
- function validerPassword(password) {
-    if (password.length < 4) {
-        throw new Error("Le nom est trop court. ")
-    }
-    
-    }
-/************************************************************************************
- * Cette fonction prend un email en paramètre et valide qu'il est au bon format. 
- * @param {string} email 
- * @throws {Error}
- //**********************************************************************************/
-
-    function validerEmail(email) {
-        let emailRegExp = new RegExp("[a-z0-9._-]+@[a-z0-9._-]+\\.[a-z0-9._-]+")
-        if (!emailRegExp.test(email)) {
-            throw new Error("L'email n'est pas valide.")
-        }
-    console.log(email.value)    
-    }
-/**************************************************************
- * Cette fonction affiche le message d'erreur passé en paramètre. 
- * Si le span existe déjà, alors il est réutilisé pour ne pas multiplier
- * les messages d'erreurs. 
- * @param {string} message 
- *//****************************************************** */
-    function afficherMessageErreur(message) {
-    
-    let pErreurMessage = document.querySelector(".popup")
-
-        if (!pErreurMessage) {
-            let popup = document.querySelector(".popup")
-            balisepErreurMessage = document.createElement("p")
-            balisepErreurMessage.id = "erreurMessage"
-            
-            popup.append(balisepErreurMessage)
-        }
-    
-    balisepErreurMessage.innerText = message
-    }
-    /****************************************************************
-    * Cette fonction génère le login au bon format  et appel fetch 
-    *  @param {string} email 
-    *  @param {string} password 
-    *//***************************************************************** */ 
-
-function seLoguer(email, password) {
-        
-    let seConnecter= document.getElementById("bouton-envoyer")
-    // Gestion de l'événement click sur le bouton "valider"
-    let form = document.querySelector("formulaire2")
-    form.addEventListener("submit", (event) => {
-    event.preventDefault()
-    
-    
-    let user = {
-        email: email.value,
-        password: password.value
-    }  
-    const chargeUtile = JSON.stringify(user)      // creation de la charge utile au format JSON
-       
-    fetch("http://localhost:5678/api/users/login", {
-        method: "POST",
-        headers: '{"content-type":"application/json"}',
-        body: chargeUtile
-
-    .then(response => response.json())
-    .then(result => { 
-        console.log(result);
-        // Si couple email/mdp incorrect
-        if (result.error || result.message) {
-            throw new Error("une erreur est survenue, veuillez vous reconnecter.")  
-
-        // Si couple email/mdp correct
-        } else if (result.token) {
-            localStorage.setItem("token", response.token);
-            window.location.href = "index.html";
-        }
-    
-    })
-    })
-    })
-};
+//  ajoute un écouteur d'événements sur le submit
+form.addEventListener("submit", async (e) => {
+  // Récupère la valeur de l'email et la valeur du mot de passe de l'utilisateur
+   
+   const email = document.getElementById("email").value;
+   const password = document.getElementById("password").value;
+   // Empêche la soumission du formulaire automatiquement et le rechargement de la page en cas d'erreur
+   e.preventDefault();
+   // teste l'expression reguliere sur la forme du mail, si different, affiche un message d'erreur
+   let emailRegExp = new RegExp("[a-z0-9._-]+@[a-z0-9._-]+\\.[a-z0-9._-]+")
+   if (!emailRegExp.test(email)) {
+      return error.innerText = "email invalide"
+   // teste la longueur du mot de passe ( entre 5 et 6 ), si different, affiche un message d'erreur  
+   } else if (password.length < 5 && password.length < 6 ) {
+      return error.innerText = "mot de passe incorrect!"
+   }
+   // Empêche la soumission du formulaire automatiquement et le rechargement de la page en cas d'erreur
+   e.preventDefault();
+  // Envoie une requête POST à l'API pour se connecter avec les identifiants de l'utilisateur
+   const response = await fetch("http://localhost:5678/api/users/login", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      // Ajoute les informations d'identification dans le corps de la requête
+      body: JSON.stringify({ email, password }),
+   });
+  // Si la réponse est ok
+   if (response.ok) {
+    // Récupère les données de la réponse
+   const data = await response.json();
+    // Stocke le token dans le sessionStorage. Permet de garder en memoire le token même si changement de page tant que la session est ouverte.
+   sessionStorage.setItem("accessToken", data.token);
+    // Redirige l'utilisateur vers la page d'accueil
+   window.location.href = "index.html";
+    // Si la réponse est un échec, c'est une erreur d'identifiant ou de mots de passe que l'on affiche dynamiquement 
+   } else {
+   const popup = document.querySelector(".popup");
+   const error = document.createElement("p");
+   popup.append(error);
+   error.innerText = "connexion refusée";
+   }
+});
