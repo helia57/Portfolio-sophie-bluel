@@ -6,30 +6,25 @@
 
     // Récupération de l'élément du DOM qui accueillera les projets: <section id = "portfolio">
     let baliseSectionPortfolio = document.getElementById("portfolio");
-    // création du titre en mode dynamique, et 2 div 
-    let titreGallery = document.createElement("h2");        //  <h2>
-    let baliseDivFilterBar = document.createElement("div"); //  <div class="filterBar">
-    let baliseDivGallery = document.createElement("div");   //  <div class="photoGallery">
+    // création 3 div 
+                           
+    let baliseDivFilterBar = document.createElement("div");                  //  <div class="filterBar">
+    let baliseDivGallery = document.createElement("div");                   //  <div class="photoGallery">
     
-                     
-        // creation du titre de section
-    titreGallery.innerText = "Mes projets";
-    baliseSectionPortfolio.appendChild(titreGallery);
-        // creation <div> pour bouton filtre dans la balise section#portfolio
-    baliseDivFilterBar.classList = "filterBar";                     //<div class="filterBar"></div>
-    baliseSectionPortfolio.appendChild(baliseDivFilterBar);         //section portfolio parent de div filterBar
-        // creation div pour tous les projets
-    baliseDivGallery.classList = "photoGallery";                    //<div class="photoGallery"></div>
-    baliseSectionPortfolio.appendChild(baliseDivGallery);           //section portfolio parent de div gallery
+    // creation <div> pour bouton filtre dans la balise section#portfolio
+    baliseDivFilterBar.classList = "filterBar";                          //<div class="filterBar"></div>
+    baliseSectionPortfolio.appendChild(baliseDivFilterBar);              //section portfolio parent de div filterBar
+    // creation div pour tous les projets
+    baliseDivGallery.classList = "photoGallery";                         //<div class="photoGallery"></div>
+    baliseSectionPortfolio.appendChild(baliseDivGallery);                //section portfolio parent de div gallery
 
-        // creation 4 boutons filtres par catégories
-    
-    let boutonTous = document.createElement("button")       //  <button class="tous">
+    // creation 4 boutons filtres par catégories
+    let boutonTous = document.createElement("button")                   //  <button class="tous">
     boutonTous.textContent = "tous";
     boutonTous.id =("btnTous");
     baliseDivFilterBar.appendChild(boutonTous);
 
-    let boutonObjets = document.createElement("button")     //  <button class="Objets">
+    let boutonObjets = document.createElement("button")                 //  <button class="Objets">
     boutonObjets.textContent = "Objets";
     boutonObjets.id =("btnObjets");
     baliseDivFilterBar.appendChild(boutonObjets);
@@ -60,6 +55,7 @@ async function createProject(argument)   {
     
     //fiche projet dans une figure
     let baliseFigure = document.createElement("figure");
+    baliseFigure.classList.add("works-projet");
     baliseFigure.classList = "projets";
     baliseDivGallery.appendChild(baliseFigure); 
          

@@ -3,64 +3,42 @@
    License: none (public domain)
 */
 
- span, applet, object, iframe,
-h1, h2, h3, h4, h5, h6, blockquote, pre, abbr, acronym, address, big, cite, code,
-del, dfn, em, img, ins, kbd, q, s, samp,
-small, strike, strong, sub, sup, tt, var,
-a,u, center,
-dl, dt, dd, ol, ul, li,
-fieldset, form, label, legend,
-table, caption, tbody, tfoot, thead, tr, th, td,
-article, canvas, details, embed,
-figure, figcaption, footer, header, hgroup,
-menu, output, ruby, section, summary,
-time, mark, audio, video {
-	margin: 0;
-	padding: 0;
-	border: 0;
-	font-size: 100%;
-	font: inherit;
-	vertical-align: baseline;
-	text-decoration: none;
-	color: #000;
-}
+
 /* HTML5 display-role reset for older browsers */
-article, details, figcaption, figure,
-footer, header, hgroup, menu, nav, section {
-	display: block;
-}
-body {
-	line-height: 1;
-}
-ol, ul {
-	list-style: none;
-}
-blockquote, q {
-	quotes: none;
-}
-blockquote:before, blockquote:after,
-q:before, q:after {
-	content: '';
-	content: none;
-}
+ 
+
 table {
 	border-collapse: collapse;
 	border-spacing: 0;
 }
 /** end reset css**/
 body {
-	max-width: 1140px;
-	margin:auto;
+	display: flex;
+	flex-direction: column;
+	max-width: 1440px;
+	margin: 100px;
 	font-family: 'Work Sans' ;
 	font-size: 14px;
+	line-height: 1;
+	gap: 70px;
+	justify-content: center;
+
+}
+main {
+	display: flex;
+	flex-direction: column;
+	gap: 30px;
+	margin: 90px;
+	justify-content: center;
 }
 header {
 	display: flex;
-	justify-content: space-between;
-	margin: 50px 0
+	width: 100%;
+	
 }
 section {
-	margin: 50px 0
+	display:flex;
+	
 }
 
 h1{
@@ -69,13 +47,30 @@ h1{
 	font-family: 'Syne';
 	font-size: 22px;
 	font-weight: 800;
-	color: #B1663C
+	color: #B1663C;
+	width: 213px;
+	height: 42px;
+	justify-content: center;
+	align-items: flex-start;
+	gap: 4px;
 }
 
 h1 > span {
+	display: flex;
+	flex-wrap: nowrap;
+	width: 213px;
+	height: 42px;
 	font-family: 'Work Sans';
 	font-size:10px;
 	letter-spacing: 0.1em;
+	color: rgba(147, 83, 47, 1);
+	text-align: center;
+	font-family: Work Sans;
+	font-style: normal;
+	font-weight: 400;
+	line-height: normal;
+	letter-spacing: 0.5px;
+	text-transform: uppercase;
 
 }
 
@@ -85,49 +80,74 @@ h2{
 	font-size: 30px;
 	color: #1D6154
 }
+nav a {
+	display: flex;
+	text-decoration: none;
+}
 nav {
 	display: flex;
+	width: 100%;
+	
+
 }
 nav div {
 	display: flex;
 	align-items: center;
 	list-style-type: none;
+	gap: 20px;
 
 }
 nav h4 {
-	padding: 0 10px;
-	font-size: 1.2em;
-}
-
-h4:hover {
-	color: #B1663C;
-}
-b.h4 {
 	color: #000;
 	text-align: center;
 	font-family: Work Sans;
 	font-size: 16px;
 	font-style: normal;
-	font-weight: 600;
+	font-weight: 400;
 	line-height: normal;
 }
+
+h4:hover {
+	color: #000;
+	font-weight: bold;
+}
+
 #introduction {
 	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
 	align-items: center;
+	width: 100%;
+	gap: 50px;
 }
 #introduction figure {
-	flex: 1
+	display:block;
+	object-fit: cover;
+	
 }
 #introduction img {
 	display: block;
-	margin: auto;
-	width: 80%;
+	width: 100%;
+	height: 355px;
 }
 
 #introduction article {
-	flex: 1
+	display: flex;
+	flex-direction: column;
+	height: 192 px;
+	width: 40%;
+	color: #3D3D3D;
+	font-family: Work Sans;
+	font-size: 14px;
+	font-style: normal;
+	font-weight: 400;
+	line-height: normal;
+	padding: 7px;
+	gap:5px;
+
 }
 #introduction h2 {
+	display:flex;
 	margin-bottom: 1em;
 }
 
@@ -135,8 +155,14 @@ b.h4 {
 	margin-bottom: 0.5em;
 }
 #portfolio h2 {
+	display: flex;
 	text-align: center;
-	margin-bottom: 1em;
+	padding: 30px 31px;
+}
+#portfolio {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
 }
 .photoGallery {
 	width: 100%;
@@ -144,29 +170,38 @@ b.h4 {
 	grid-template-columns: 1fr 1fr 1fr;
 	grid-column-gap: 20px;
 	grid-row-gap: 20px;
+	justify-content: center;
 }
-
+.works-projet {
+	width: 310px;
+	height: 413px;
+}
 .photoGallery img {
 	width: 100%;
 
 }
 #contact {
-	width: 50%;
-	margin: auto;
+	display: flex;
+	flex-direction: column;
+	
 }
 #contact > * {
 	text-align: center;
-
+}
+p#mon-ancre {
+	display: flex;
+	justify-content: center;
 }
 #contact h2{
 	margin-bottom: 20px;
 }
 #contact form {
 	text-align: left;
-	margin-top:30px;
-	margin-left: 90px;
+	margin-top: 25px;
+	margin-left: 353px;
 	display: flex;
 	flex-direction: column;
+	justify-content: center;
 }
 
 input {
@@ -193,7 +228,7 @@ input[type="submit"]{
 	font-weight: 700;
 	color: white;
 	background-color: #1D6154;
-	margin : 2em 105px;
+	margin : 2em 80px;
 	width: 180px;
 	height: 36px;
 	text-align: center;
@@ -203,16 +238,40 @@ input[type="submit"]{
 	width: 180px;
 	height: 36px;
 }
+footer {
+	display: flex;
+	width: 100%;
+}
 footer nav div {
 	display: flex;
 	justify-content: flex-end;
 	margin: 2em
+}
+ul {
+	display:flex;
+	width: 100%;
+}
+#mention-legale {
+	display:flex;
+	padding-left: 1000px;
+	color: #000;
+	font-family: Work Sans;
+	font-size: 14px;
+	font-style: normal;
+	font-weight: 300;
+	line-height: normal;
+	justify-content: flex-end;
+}
+#mention-legale:hover {
+	font-weight: 600;
+	cursor: pointer;
 }
 #text {
 	visibility: hidden;
 	display: none;
 }
 button {
+	display: flex;
 	font-family: 'Syne';
 	font-weight: 700;
 	background-color: white;
@@ -224,36 +283,40 @@ button {
 	font-size: 16px;
 	font-style: normal;
 }
-button:hover, button:active {
-	background-color: #1D6154;
-	border: 1px solid #1D6154;
+button:hover, button:active, #btnTous:hover, #btnTous:active {
+	background: #0E2F28;
+	border: 1px solid #0E2F28;
 	color:aliceblue;
 	cursor: pointer;
 }	
 div.filterBar {
 	display: flex;
 	width: 100%;
-	padding: 0px 200px;
+	padding: 0px 125px;
 	gap:10px;
 	justify-items: center;
 	margin: 50px 35px;
+	justify-content: center;
 }
 #btnTous {
-	
+	background-color: #1D6154;
+	border: 1px solid #1D6154;
+	color:aliceblue;
+	cursor: pointer;
 	width: 100px;
-	padding: 9px 15px;
+	padding: 9px 30px;
 }
 #btnObjets {
 	width: 130px;
-	padding: 9px 15px;
+	padding: 9px 30px;
 }
 #btnAppart {
 	width: 187px;
-	padding: 9px 15px;
+	padding: 9px 30px;
 }
 #btnHotel {
-	width: 220px;
-	padding: 9px 15px;
+	width: 225px;
+	padding: 9px 22px;
 }
 #insta {
 	width: 22px;
@@ -271,7 +334,8 @@ div.filterBar {
 	font-weight: 700;
 	line-height: normal;
 	height: 36px;
-	width: 90%;
+	width: 100%;
+	padding: 2px 20px;
 }
 .loguin {
 	display:flex;
@@ -352,6 +416,7 @@ div.filterBar {
 }
 .popup {
 	display: flex;
+	flex-direction: column;
 }
 /****modale*****************************************************/
 *,
@@ -390,7 +455,7 @@ body {
 	position: absolute;
 	width: 100%;
 	height: 100%;
-	background: rgba(0, 0, 0, 0.03)
+	background: rgba(0, 0, 0, 0.7)
 }
 
 .modal {
@@ -424,14 +489,18 @@ body {
 	color: #FFF;
 }
 .modal h1 {
+	display: flex;
 	color: #000;
 	text-align: center;
 	font-family: Work Sans;
 	font-size: 26px;
 	font-style: normal;
 	font-weight: 400;
+	width:100%;
+	height: 30px;
 	line-height: normal;
-	padding: 60px 0px;
+	padding: 60px 200px;
+	justify-content: center;
 }
 p {
 	display: flex;
@@ -497,12 +566,48 @@ p {
 }
 .frame {
 	display: flex;
-	gap: 75%;
-	padding-top: 30px;
-	
+	width: 1140px;
+	height: 42px;
+	gap: 766px;
+}
+/************** modal***************************/	
+.container2 {
+	display: flex;
+	flex-direction: row;
+	align-items: baseline;
+	justify-content: center;
+	gap: 20px;
+}
+i.fa-solid.fa-pen-to-square {
+	display: flex;
+	width: 15.58px;
+	height: 15.58px;
+}
+#modal-btn {
+	height: 36px;
+	width: 100px;
+	color: #000;
+	text-align: center;
+	font-family: Work Sans;
+	font-size: 14px;
+	font-style: normal;
+	font-weight: 400;
+	line-height: normal;
+	border-color: #FFF;
+	align-content: center;
+	align-items: center;
+	padding: 0px 19px;
 	
 }
-	
+#modal-btn:hover {
+	color:white;
+}
+#container-gallery-modale {
+	display: flex;
+	grid-template-columns: 78px 78px 78px 78px 78px;
+	grid-template-rows: 104px 104px 104px;
+}
+
 
 
 
