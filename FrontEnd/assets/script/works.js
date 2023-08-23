@@ -1,6 +1,5 @@
 
     
-    
     //************************************************/
     //* création de la section dynamique du site     */
     //************************************************/
@@ -45,7 +44,7 @@
     boutonHotelEtRestaurants.id =("btnHotel");
     baliseDivFilterBar.appendChild(boutonHotelEtRestaurants);       
            
-    console.log(document)
+    
 /*************************************************** */
 /** Crée une fiche projet avec une image, un titre
 /* @param { {image:imageUrl, title: string}} works

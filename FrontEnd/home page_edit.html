@@ -7,27 +7,51 @@
 		<link rel="preconnect" href="https://fonts.googleapis.com">
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 		<link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Work+Sans&display=swap" rel="stylesheet">
-		<meta name="description" content="">
-		<link rel="stylesheet" href="./assets/style.css">
-		<script src="works.js" defer ></script>
+		<script src="https://kit.fontawesome.com/73db696eb9.js" crossorigin="anonymous"></script>
+		<meta name="description" content="Sophie Bluel, architecte d'interieur">
+		<link rel="stylesheet" href="assets/style.css">
+		<script src="assets/script/works.js" defer ></script>
 		
 	</head>
 	<body>
 		<header>
-			<h1>Sophie Bluel <span>Architecte d'intérieur</span></h1>
-			<nav>
-				<div>
-					<h4><b>projets</b></h4>
-					<a href="#mon-ancre"><h4>contact</h4></a>
-					<a href = "./login.html"><h4>login</h4></a>
-					<a href="https://www.instagram.com" target="_blank"><h4><img id="insta" src="./assets/icons/instagram.png" alt="Instagram"></h4></a>
+			<div class="wrapper">
+				<aside class="mode-edition modal-trigger">
+					<i class="fa-solid fa-pen-to-square"></i>
+					<p id="text-edition">Mode édition</p>
+					<button id="publier-changements" type="submit" formaction="get" >Publier les changements</button>
+				</aside>
+				<div class="frame">
+					<h1>Sophie Bluel <span>Architecte d'intérieur</span></h1>
+					<nav>
+						<div>
+							<h4><b>projets</b></h4>
+							<a href="#monAncre"><h4>contact</h4></a>
+							<a href = "login.html"><h4>login</h4></a>
+							<a href="https://www.instagram.com" target="_blank"><h4><img id="insta" src="assets/icons/instagram.png" alt="Instagram"></h4></a>
+						</div>
+					</nav>
 				</div>
-			</nav>
+			</div>
 		</header>
+
+		
+		
+
+		<aside class="modal-container">
+			<div  class="overlay  modal-trigger"></div>
+			<div class="modal" aria-modal="true" role="dialog" aria-labelledby="titlemodal" aria-describedby="dialog1Desc">
+				<button id= "trigger" class="close-modal
+				 modal-trigger">X</button>
+				<h1 title="titlemodale">galerie photos</h1>
+				<p>  hear the jury' still out on science. As you may or may not know, Lindsay and  have hit  bit of  rough patch. Michael! Guy pro.</p>
+			</div>
+		</aside>
+
 		<main>
 			<section id="introduction">
 				<figure>
-					<img src="./assets/images/sophie-bluel.png" alt="">
+					<img src="assets/images/sophie-bluel.png" alt="">
 				</figure>
 				<article>
 					<h2>Designer d'espace</h2>
@@ -36,13 +60,14 @@
 					<p>En cas de besoin, une équipe pluridisciplinaire peut-être constituée : architecte DPLG, décorateur(trice)</p>
 				</article>
 			</section>
+				<button id="modal-btn" class="modal-btn modal-trigger">open</button>
 			<section id="portfolio">
 			
 			</section>
 			<section id="contact">
 				<h2>Contact</h2>
-				<p id="mon-ancre">Vous avez un projet ? Discutons-en !</p>
-				<form action="#" method="post">
+				<p id="monAncre">Vous avez un projet ? Discutons-en !</p>
+				<form action="" method="post">
 					<label for="name">Nom</label>
 					<input type="text" name="name" id="name" autocomplete="Name">
 					<label for="email">Email</label>
@@ -61,6 +86,7 @@
 				</ul>
 			</nav>
 		</footer>
+	<script src="assets/script/app.js"></script>
 	</body>
 </html>
 
