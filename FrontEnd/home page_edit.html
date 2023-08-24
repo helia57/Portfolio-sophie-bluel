@@ -26,7 +26,7 @@
 					<nav>
 						<div>
 							<h4><b>projets</b></h4>
-							<a href="#monAncre"><h4>contact</h4></a>
+							<a href="#mon-ancre"><h4>contact</h4></a>
 							<a href = "login.html"><h4>login</h4></a>
 							<a href="https://www.instagram.com" target="_blank"><h4><img id="insta" src="assets/icons/instagram.png" alt="Instagram"></h4></a>
 						</div>
@@ -34,23 +34,52 @@
 				</div>
 			</div>
 		</header>
-
-		
-		
-
 		<aside class="modal-container">
 			<div  class="overlay  modal-trigger"></div>
 			<div class="modal" aria-modal="true" role="dialog" aria-labelledby="titlemodal" aria-describedby="dialog1Desc">
 				<button id= "trigger" class="close-modal
-				 modal-trigger">X</button>
+				modal-trigger">X</button>
 				<h1 title="titlemodale" id="titre-modale">galerie photo</h1>
 				<div id="container-gallery-modale">
 
 				</div>
-				<p>  hear the jury' still out on science. As you may or may not know, Lindsay and  have hit  bit of  rough patch. Michael! Guy pro.</p>
+				<p id="ligne">__________________________________________________________</p>
+				<button id="btn-ajouter-photos" class="ajout-photos">ajouter une photo</button>
+				<button id="btn-supp-gallerie" class="supp-gallerie">supprimer la galerie</button>
 			</div>
 		</aside>
-
+		<aside class="modal2-container2">
+			<div  class="overlay2  modal2-trigger2"></div>	
+			<div class="modal2" aria-modal="true" role="dialog" aria-labelledby="titlemodal" aria-describedby="dialog1Desc">
+				<button id= "trigger2" class="close-modal2
+				modal2-trigger2">X</button>
+				<h1 title="titlemodale2" id="titre-modale2">ajout photos</h1>
+				<div id="container-modale2">
+					<i class="fa-regular fa-pen-to-square fa-xl" style="color: #0e091a;"></i>
+					<button>ajouter photo  </button>
+					<p>jpg, png : 4mo max</p>
+					<form>
+						<label for="name">Titre</label>
+						<input type="text" name="title" id="title" autocomplete="text">
+						<label for="text">Catégorie</label>
+						<input type="text" name="email" id="email" autocomplete="text">
+					</form>
+					<button id="btn-valider2">valider </button>
+				</div>
+			</div>
+		</aside>
+		<aside class="modal3-container3">
+			<div  class="overlay3  modal3-trigger3"></div>	
+			<div class="modal3" aria-modal="true" role="dialog" aria-labelledby="titlemodal" aria-describedby="dialog1Desc">
+				<button id= "trigger3" class="close-modal3
+				modal3-trigger3">X</button>
+				<h1 title="titlemodale3" id="titre-modale3">ajout photos</h1>
+				<div id="container-modale3">
+					
+					<button id="btn-valider3">valider </button>
+				</div>
+			</div>
+		</aside>
 		<main>
 			<section id="introduction">
 				<figure>
@@ -74,7 +103,7 @@
 			</section>
 			<section id="contact">
 				<h2>Contact</h2>
-				<p id="monAncre">Vous avez un projet ? Discutons-en !</p>
+				<p id="mon-ancre">Vous avez un projet ? Discutons-en !</p>
 				<form action="" method="post">
 					<label for="name">Nom</label>
 					<input type="text" name="name" id="name" autocomplete="Name">

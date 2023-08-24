@@ -1,40 +1,53 @@
+// affichage de la modale
 const modalContainer = document.querySelector(".modal-container");
 const modalTriggers = document.querySelectorAll(".modal-trigger");
-
+const modal2Container2 = document.querySelector(".modal2-container2");
+const modal2Triggers2 = document.querySelectorAll(".modal2-trigger2");
+const btnAjoutPhotoModal1 = document.querySelector("ajout-photos");
+const modal3Container3 = document.querySelector(".modal3-container3");
+const modal3Triggers3 = document.querySelectorAll(".modal3-trigger3");
 
 modalTriggers.forEach(trigger => trigger.addEventListener("click", toggleModal))
 
 function toggleModal(){
-  modalContainer.classList.toggle("active")
-}
+  modalContainer.classList.toggle("active");
+ 
+  for (let i = 0; i < works.length; i++) {
+    const projet = works[i] 
 
 
-async function genererProjetModale(works) {
-    let projet = works;
       // Récupération de l'élément du DOM qui accueillera les projets: <section id = "container-gallery-modale">
-    let baliseDivContainerGalleryModale = document.getElementById("container-gallery-modale");
-    //fiche projet dans une figure
-    let baliseFigureModale = document.createElement("figure");
-    baliseFigureModale.classList.add("works-projet-modale");
-    baliseFigureModale.classList = "projets-modale";
-    baliseDivContainerGalleryModale.appendChild(baliseFigureModale); 
+  let baliseDivContainerGalleryModale = document.querySelector("#container-gallery-modale");
+
+      //fiche projet dans une figure
+  let baliseFigureModale = document.createElement("figure");
+  baliseFigureModale.classList.add("works-projet-modale");
+  baliseFigureModale.classList = "projets-modale";
+  baliseDivContainerGalleryModale.appendChild(baliseFigureModale); 
+          
+      // une image
+  let imageElementModale = document.createElement("img");
+  imageElementModale.src = projet.imageUrl;
+  imageElementModale.setAttribut = "alt", "image du rendu du projet ${works.title}";
+  imageElementModale.classList = "image-modale";
+  imageElementModale.innerText = projet.imageUrl ?? "image bientôt disponible";  // si pas d'image, return "image bientôt disponible"
+  baliseFigureModale.append(imageElementModale);
+      //un bouton "poubelle"
+  let delButton = document.createElement("button");
+  delButton.innerHTML = "<i class=\"fa-solid fa-trash-can fa-xs\"></i>";
+  delButton.classList.add("delete");
+  imageElementModale.appendChild(delButton);
         
-    // une image
-    const imageElementModale = document.createElement("img");
-    imageElementModale.src = projet.imageUrl;
-    imageElementModale.setAttribut = "alt", "image du rendu du projet ${works.title}";
-    imageElementModale.innerText = projet.imageUrl ?? "image bientôt disponible";  // si pas d'image, return "image bientôt disponible"
-    baliseFigureModale.appendChild(imageElementModale);
-      
-    // un texte
-    let textCardElementModale = document.createElement("figcaption");  
-    textCardElementModale.innerText = projet.title;
-    textCardElementModale = projet.title ?? "description bientôt disponible"; // si pas de titre au projet, return "description bientôt disponible"
-    baliseFigureModale.appendChild(textCardElementModale);
+      // un texte
+  let textCardElementModale = document.createElement("figcaption");  
+  textCardElementModale.innerText = "éditer";
+  textCardElementModale.classList.add("text-miniature");
+  baliseFigureModale.appendChild(textCardElementModale);
+} 
 }
 
-async function genererGetWorksModale () { 
-  const wrapper = document.querySelector("container-gallery-modale");
+async function genererGetWorks () { 
+  const wrapper = document.querySelector("#container-gallery-modale");
   const loader = document.createElement("p");
   loader.innertext = "chargement..." 
   wrapper.append(loader);    
@@ -50,18 +63,34 @@ async function genererGetWorksModale () {
   if (!response.ok) {
       throw new Error(`Erreur serveur`);
   }
-
+  
       works = await response.json()
       loader.remove ()
-      wrapper.append(genererProjetModale(works))
-            
+      wrapper.append(toggleModal(works));
+          
       
   } catch (erreur) {
       loader.innertext = ("impossible de charger le contenu")
       loader.style.color = "red"
       return
   }
-  return 
+  return works
+
 }
-genererGetWorksModale();
-genererProjetModale();
+
+//*********modale 2 ****************/
+/*                                 */
+/********************************* */
+
+
+  btnAjoutPhotoModal1.addEventListener("click", function (e) {
+    e.preventDefault();
+  }); 
+    modalContainer.classList.add("active"),
+    modal2Container2.classList.toggle("active"),
+    modal2Triggers2.classList.remove.toggle("active"),
+
+    console.log(modal2Triggers2)
+ 
+
+

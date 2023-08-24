@@ -78,7 +78,8 @@ h2{
 	font-family: 'Syne';
 	font-weight: 700;
 	font-size: 30px;
-	color: #1D6154
+	color: #1D6154; 
+	justify-content: center;
 }
 nav a {
 	display: flex;
@@ -183,6 +184,8 @@ h4:hover {
 #contact {
 	display: flex;
 	flex-direction: column;
+	width: 100%;
+	justify-content: center;
 	
 }
 #contact > * {
@@ -193,12 +196,14 @@ p#mon-ancre {
 	justify-content: center;
 }
 #contact h2{
+	display: flex;
 	margin-bottom: 20px;
 }
 #contact form {
 	text-align: left;
 	margin-top: 25px;
-	margin-left: 353px;
+	padding-left: 410px;
+	width: 100%;
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
@@ -228,7 +233,7 @@ input[type="submit"]{
 	font-weight: 700;
 	color: white;
 	background-color: #1D6154;
-	margin : 2em 80px;
+	margin : 2em 100px;
 	width: 180px;
 	height: 36px;
 	text-align: center;
@@ -418,7 +423,7 @@ div.filterBar {
 	display: flex;
 	flex-direction: column;
 }
-/****modale*****************************************************/
+/****modale 1*****************************************************/
 *,
 ::before,
 ::after { 
@@ -469,6 +474,7 @@ body {
 	top: 60%;
 	left: 50%;
 	transform:translate(-50%,-50%)
+	
 }
 .close-modal {
 	padding: 8px 10px;
@@ -570,7 +576,7 @@ p {
 	height: 42px;
 	gap: 766px;
 }
-/************** modal***************************/	
+/************** modal 1 ***************************/	
 .container2 {
 	display: flex;
 	flex-direction: row;
@@ -603,13 +609,219 @@ i.fa-solid.fa-pen-to-square {
 	color:white;
 }
 #container-gallery-modale {
-	display: flex;
-	grid-template-columns: 78px 78px 78px 78px 78px;
-	grid-template-rows: 104px 104px 104px;
+	display: grid;
+	width: 420px;
+	grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+	grid-column-gap: 10px;
+	grid-row-gap: 30px;
+	padding: 10px 70px;
+	border-bottom-width: 4px;
+	border-bottom-color: #B3B3B3;;  
+}
+.projets-modale {
+	width: 78px ;
+	height: 104px;
+	object-fit: contain;
+}
+.image-modale {
+	width: 100%;
+	object-fit: contain;
+	justify-content: center;
+}
+#ligne {
+	padding: 20px 70px;
+	width: 420px;
+	color:#3D3D3D;
+}
+.text-miniature {
+	color: #000;
+	text-align: left;
+	font-family: Work Sans;
+	font-size: 12px;
+	font-style: normal;
+	font-weight: 400;
+	line-height: normal;
+	justify-content: center;
+}
+#btn-ajouter-photos {
+	width: 30%;
+	height: 36px;
+	border-radius: 60px;
+	background: #1D6154;
+	color: #FFF;
+	justify-content: center;
+	padding: 6px 6px;
+	margin: 15px 182px;
+}
+#btn-ajouter-photos:hover, #btn-ajouter-photos:active {
+	background-color: rgba(14, 47, 40, 1);
+}
+.fa-solid.fa-trash-can.fa-xs::before {
+	position: absolute;
+	top: 6px;
+	right: 4px;
+	background: white;
+	padding: 4px;
+	border: none;
+	font-size: 9px;
+	border-radius: 2px;
+}
+.delete {
+	position: absolute;
+	top: 6px;
+	right: 4px;
+	background: white;
+	padding: 4px;
+	border: none;
+	font-size: 9px;
+	border-radius: 2px;
 }
 
+#btn-supp-gallerie {
+	color: #D65353;
+	width: 237px;
+	height: 36px;
+	text-align: center;
+	font-family: Syne;
+	font-size: 14px;
+	font-style: normal;
+	font-weight: 400;
+	line-height: normal;
+	background-color: white;
+	border-color: white;
+	border-radius: white;
+	margin: 0px 156px;
+	padding: 20px 35px;
+}
+/******** modale 2 **********************************/
+.modal2-container2 {
+	visibility: hidden;
+	position: fixed;
+	top: 0;
+	left:0;
+	width: 100vw;
+	height: 100vh;
+	
+}
+.modal2-container2.active {
+	visibility: visible;
+}
 
+.overlay2 {
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	background: rgba(0, 0, 0, 0.7)
+}
 
+.modal2 {
+	width: 630px;
+	height: 731px;
+	min-width: 300px;
+	border-radius: 10px;
+	background: rgba(255, 255, 255, 1);
+	padding: 30px;
+	position: absolute;
+	top: 60%;
+	left: 50%;
+	transform:translate(-50%,-50%)
+	
+}
+.close-modal2 {
+	padding: 8px 10px;
+	border: none;
+	border-radius: 5px;
+	font-size: 18px;
+	position : absolute;
+	top: 10px;
+	right: 10px;
+	cursor: pointer;
+	background: #FFF;
+	border: #FFF;
+	color: #000;
 
+}
+.close-modal2:hover {
+	background-color:rgba(14, 47, 40, 1);
+	color: #FFF;
+}
+#titre-modale2{
+	display: flex;
+	color: #000;
+	text-align: center;
+	font-family: Work Sans;
+	font-size: 26px;
+	font-style: normal;
+	font-weight: 400;
+	width:100%;
+	height: 30px;
+	line-height: normal;
+	padding: 60px 200px;
+	justify-content: center;
+}
+/******** modale 3 **********************************/
+.modal3-container3 {
+	visibility: hidden;
+	position: fixed;
+	top: 0;
+	left:0;
+	width: 100vw;
+	height: 100vh;
+	
+}
+.modal3-container3.active {
+	visibility: visible;
+}
 
+.overlay3 {
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	background: rgba(0, 0, 0, 0.7)
+}
 
+.modal3 {
+	width: 630px;
+	height: 731px;
+	min-width: 300px;
+	border-radius: 10px;
+	background: rgba(255, 255, 255, 1);
+	padding: 30px;
+	position: absolute;
+	top: 60%;
+	left: 50%;
+	transform:translate(-50%,-50%)
+	
+}
+.close-modal3 {
+	padding: 8px 10px;
+	border: none;
+	border-radius: 5px;
+	font-size: 18px;
+	position : absolute;
+	top: 10px;
+	right: 10px;
+	cursor: pointer;
+	background: #FFF;
+	border: #FFF;
+	color: #000;
+
+}
+.close-modal2:hover {
+	background-color:rgba(14, 47, 40, 1);
+	color: #FFF;
+}
+#titre-modale2{
+	display: flex;
+	color: #000;
+	text-align: center;
+	font-family: Work Sans;
+	font-size: 26px;
+	font-style: normal;
+	font-weight: 400;
+	width:100%;
+	height: 30px;
+	line-height: normal;
+	padding: 60px 200px;
+	justify-content: center;
+}

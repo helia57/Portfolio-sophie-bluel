@@ -43,6 +43,6 @@ form.addEventListener("submit", async (e) => {
    const popup = document.querySelector(".popup");
    const error = document.createElement("p");
    popup.append(error);
-   error.innerText = "connexion refusée";
+   error.innerText = "erreur identifiant ou mot de passe";
    }
 });
