@@ -44,27 +44,36 @@
 
 				</div>
 				<p id="ligne">__________________________________________________________</p>
-				<button id="btn-ajouter-photos" class="ajout-photos">ajouter une photo</button>
+				<button id="btn-ajouter-photos" class="btn-ajout-photos">ajouter une photo</button>
 				<button id="btn-supp-gallerie" class="supp-gallerie">supprimer la galerie</button>
 			</div>
 		</aside>
 		<aside class="modal2-container2">
 			<div  class="overlay2  modal2-trigger2"></div>	
-			<div class="modal2" aria-modal="true" role="dialog" aria-labelledby="titlemodal" aria-describedby="dialog1Desc">
+			<div class="modal2" aria-modal="true" role="dialog" aria-labelledby="titlemodal2" aria-describedby="dialog2Desc">
 				<button id= "trigger2" class="close-modal2
-				modal2-trigger2">X</button>
+					modal2-trigger2">X</button>
 				<h1 title="titlemodale2" id="titre-modale2">ajout photos</h1>
-				<div id="container-modale2">
-					<i class="fa-regular fa-pen-to-square fa-xl" style="color: #0e091a;"></i>
-					<button>ajouter photo  </button>
-					<p>jpg, png : 4mo max</p>
-					<form>
-						<label for="name">Titre</label>
-						<input type="text" name="title" id="title" autocomplete="text">
-						<label for="text">Catégorie</label>
-						<input type="text" name="email" id="email" autocomplete="text">
-					</form>
-					<button id="btn-valider2">valider </button>
+				<div id="frame2-modale2">
+					<div id="telechgmntphoto">
+						<img src="assets/icons/picture-svgrepo-com 1.png" alt="icone image pour téléchargement">
+					</div>
+					
+					<button id="btn-ad-photo">+ ajouter photo</button>
+					<p id="text-modal2">jpg, png : 4mo max</p>
+				</div>
+				<form id="formulaire3">
+					<label for="name">Titre</label>
+					<input class="modal2formulaire" type="text" name="title" id="title" autocomplete="text">
+					<label for="text">Catégorie</label>
+					<select name="category" id="categorychoix">
+						<option value="id: 1, name: Objets">Objets</option>
+						<option value="id: 2, name: Appartements">Appartements</option>
+						<option value="id: 3, name: Hotels & restaurants">Hôtels et restaurants</option>
+					</select>
+				</form>
+				
+				<button id="btn-valider2">valider </button>
 				</div>
 			</div>
 		</aside>
@@ -83,7 +92,7 @@
 		<main>
 			<section id="introduction">
 				<figure>
-					<img src="assets/images/sophie-bluel.png" alt="">
+					<img src="assets/images/sophie-bluel.png" alt="image sophieBluel">
 				</figure>
 				<article>
 					<h2>Designer d'espace</h2>

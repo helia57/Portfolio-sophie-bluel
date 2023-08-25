@@ -3,7 +3,10 @@ const modalContainer = document.querySelector(".modal-container");
 const modalTriggers = document.querySelectorAll(".modal-trigger");
 const modal2Container2 = document.querySelector(".modal2-container2");
 const modal2Triggers2 = document.querySelectorAll(".modal2-trigger2");
-const btnAjoutPhotoModal1 = document.querySelector("ajout-photos");
+const btnAjoutPhotoModal1 = document.querySelector(".btn-ajout-photos");
+// bouton pour fermer la modale2
+const btnFermerModale2= document.querySelector("#trigger2");
+const fermerModale2Overlay = document.querySelector(".overlay2");
 const modal3Container3 = document.querySelector(".modal3-container3");
 const modal3Triggers3 = document.querySelectorAll(".modal3-trigger3");
 
@@ -43,7 +46,9 @@ function toggleModal(){
   textCardElementModale.innerText = "éditer";
   textCardElementModale.classList.add("text-miniature");
   baliseFigureModale.appendChild(textCardElementModale);
+   
 } 
+e.prevent.Default();
 }
 
 async function genererGetWorks () { 
@@ -82,15 +87,22 @@ async function genererGetWorks () {
 /*                                 */
 /********************************* */
 
+btnAjoutPhotoModal1.addEventListener("click", function (e) {
+   
+  
 
-  btnAjoutPhotoModal1.addEventListener("click", function (e) {
-    e.preventDefault();
-  }); 
-    modalContainer.classList.add("active"),
-    modal2Container2.classList.toggle("active"),
-    modal2Triggers2.classList.remove.toggle("active"),
-
-    console.log(modal2Triggers2)
- 
+    modalContainer.classList.remove("active"),
+   
+    modal2Container2.classList.add("active"),
+    // bouton et overlay pour fermer la modale2 passer en classe "active" 
+   
+    btnFermerModale2.classList.add("active"),
+    fermerModale2Overlay.classList.add("active"),
+    modalTriggers.forEach(classList.remove("active")),
+    
+    console.log(btnFermerModale2),    
+    console.log(fermerModale2Overlay),
+    console.log(modalTriggers)
+}); 
 
 

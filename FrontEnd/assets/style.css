@@ -741,7 +741,8 @@ i.fa-solid.fa-pen-to-square {
 	color: #000;
 
 }
-.close-modal2:hover {
+.close-modal2:hover,.close-modal2:active  {
+	display:block;
 	background-color:rgba(14, 47, 40, 1);
 	color: #FFF;
 }
@@ -759,6 +760,104 @@ i.fa-solid.fa-pen-to-square {
 	padding: 60px 200px;
 	justify-content: center;
 }
+#frame2-modale2 {
+	display: flex;
+	flex-direction: column;
+	border-radius: 3px;
+	background: #E8F1F6;
+	width: 420px;
+	height: 169px;
+	margin: 20px 75px;
+	padding: 15px 122px;
+	gap: 10px;
+}
+#telechgmntphoto {
+	width: 76px;
+	height: 76px;
+	padding: 0px 45px;
+}
+#btn-ad-photo:hover, #btn-ad-photo:active {
+	opacity: 0.7;
+	cursor: pointer;
+	color: white;
+}	
+#btn-ad-photo {
+	display: flex;
+	flex-direction: row;
+	width: 173px;
+	height: 36px;
+	border-radius: 60px;
+	background: #A7A7A7;
+	border-color: #A7A7A7; 
+	color: #306685;
+	text-align: center;
+	align-items: baseline;
+	font-family: Work Sans;
+	font-size: 14px;
+	font-style: normal;
+	font-weight: 500;
+	line-height: normal;
+	align-items: center;
+	padding: 8px 30px;
+	margin: 0px -7px;
+}
+#text-modal2 {
+	color: #444;
+	text-align: center;
+	font-family: Work Sans;
+	font-size: 10px;
+	font-style: normal;
+	font-weight: 400;
+	line-height: normal;
+	width: 100%;
+	margin: 0px 37px;
+}
+#formulaire3 {
+	display: flex;
+	flex-direction: column;
+	gap: 10px;
+	color: #3D3D3D;
+	font-family: Work Sans;
+	font-size: 14px;
+	font-style: normal;
+	font-weight: 500;
+	line-height: normal;
+	margin: 10px 60px;
+	padding: 15px 15px;
+}
+input.modal2formulaire {
+	width: 420px;
+	height: 51px;
+	background: #FFF;
+	box-shadow: 0px 4px 14px 0px rgba(0, 0, 0, 0.09);
+	color: #3D3D3D;
+	font-family: Work Sans;
+	font-size: 14px;
+	font-style: normal;
+	font-weight: 500;
+	line-height: normal;
+}
+#btn-valider2 {
+	display:flex;
+	margin: 0px 177px;
+	padding: 10px 60px;
+}
+/******** bouton select *****************************/
+#categorychoix {
+	width: 420px;
+	height: 51px;
+	background: #FFF;
+	box-shadow: 0px 4px 14px 0px rgba(0, 0, 0, 0.09);
+	border: #FFF;
+	color: #3D3D3D;
+	font-family: Work Sans;
+	font-size: 14px;
+	font-style: normal;
+	font-weight: 500;
+	line-height: normal;
+
+}
+
 /******** modale 3 **********************************/
 .modal3-container3 {
 	visibility: hidden;
@@ -767,19 +866,16 @@ i.fa-solid.fa-pen-to-square {
 	left:0;
 	width: 100vw;
 	height: 100vh;
-	
 }
 .modal3-container3.active {
 	visibility: visible;
 }
-
 .overlay3 {
 	position: absolute;
 	width: 100%;
 	height: 100%;
 	background: rgba(0, 0, 0, 0.7)
 }
-
 .modal3 {
 	width: 630px;
 	height: 731px;
