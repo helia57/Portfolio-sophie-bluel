@@ -33,16 +33,16 @@ form.addEventListener("submit", async (e) => {
   // Si la réponse est ok
    if (response.ok) {
     // Récupère les données de la réponse
-   const data = await response.json();
-    // Stocke le token dans le sessionStorage. Permet de garder en memoire le token même si changement de page tant que la session est ouverte.
-   sessionStorage.setItem("accessToken", data.token);
-    // Redirige l'utilisateur vers la page d'accueil
-   window.location.href = "home page_edit.html";
-    // Si la réponse est un échec, c'est une erreur d'identifiant ou de mots de passe que l'on affiche dynamiquement 
+      const data = await response.json();
+      // Stocke le token dans le sessionStorage. Permet de garder en memoire le token même si changement de page tant que la session est ouverte.
+      sessionStorage.setItem("accessToken", data.token);
+      // Redirige l'utilisateur vers la page d'accueil
+      window.location.href = "home page_edit.html";
+      // Si la réponse est un échec, c'est une erreur d'identifiant ou de mots de passe que l'on affiche dynamiquement 
    } else {
-   const popup = document.querySelector(".popup");
-   const error = document.createElement("p");
-   popup.append(error);
-   error.innerText = "erreur identifiant ou mot de passe";
+      const popup = document.querySelector(".popup");
+      const error = document.createElement("p");
+      popup.append(error);
+      error.innerText = "erreur identifiant ou mot de passe";
    }
 });

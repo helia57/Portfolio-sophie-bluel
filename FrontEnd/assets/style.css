@@ -766,7 +766,7 @@ i.fa-solid.fa-pen-to-square {
 	gap: 10px;
 }
 #telechgmntphoto {
-	width: 76px;
+	width: 176px;
 	height: 76px;
 	padding: 0px 45px;
 }
@@ -851,6 +851,9 @@ input.modal2formulaire {
 	cursor: pointer;
 	background: #FFF;
 	color: #3D3D3D;
+}
+#reviens-arriere-page:hover, #reviens-arriere-page:active {
+	background-color: #0E2F28;
 }
 .close-modal2 {
 	padding: 8px 10px;
@@ -949,4 +952,49 @@ input.modal2formulaire {
 	line-height: normal;
 	padding: 60px 200px;
 	justify-content: center;
+}
+#reviens-arriere-page2 {
+	border-color:#3D3D3D;
+	padding: 8px 10px;
+	border: none;
+	border-radius: 5px;
+	font-size: 18px;
+	position : absolute;
+	top: 12px;
+	right: 591px;
+	cursor: pointer;
+	background: #FFF;
+	color: #3D3D3D;
+}
+#reviens-arriere-page2:hover, #reviens-arriere-page2:active {
+	background-color: #0E2F28;
+}
+#titre-modale3 {
+	display: flex;
+	color: #000;
+	text-align: center;
+	font-family: Work Sans;
+	font-size: 26px;
+	font-style: normal;
+	font-weight: 400;
+	width:100%;
+	height: 30px;
+	line-height: normal;
+	padding: 60px 200px;
+	justify-content: center;
+}
+#imageInput {
+	
+	padding: 0px;
+}
+img#imageDisplay {
+	max-width: 100%;
+    height: 129px;
+	width: 100%;
+	object-fit: contain;
+    margin: -21px -4px;
+	
+}
+img#icone-image {
+	display: flex;
 }

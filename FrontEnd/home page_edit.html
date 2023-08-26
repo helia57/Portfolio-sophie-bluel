@@ -51,48 +51,35 @@
 		<aside class="modal2-container2">
 			<div  class="overlay2  modal2-trigger2"></div>	
 			<div class="modal2" aria-modal="true" role="dialog" aria-labelledby="titlemodal2" aria-describedby="dialog2Desc">
-				<div>
-					<button id="reviens-arriere-page" class="modal2-trigger2"><i class="fa-solid fa-arrow-left"></i></button>
+				<div class="btn-nagivation">
+					<button id="reviens-arriere-page" class="modal2-trigger2"><i class="fa-solid fa-arrow-left"></i></button>		<!--div+bouton de navigation fermer/retour arriere--> 
 					<button id= "trigger2" class="close-modal2
 					modal2-trigger2">X</button>
 				</div>
 				
-				<h1 title="titlemodale2" id="titre-modale2">ajout photos</h1>
+				<h1 title="titlemodale2" id="titre-modale2">ajout photos</h1>													<!--titre modal2-->
 				<div id="frame2-modale2">
-					<div id="telechgmntphoto">
-						<img src="assets/icons/picture-svgrepo-com 1.png" alt="icone image pour téléchargement">
+					<div id="telechgmntphoto">																					<!--div pour la photo à telecharger-->
+						<img id="icone-image" src="assets/icons/picture-svgrepo-com 1.png" alt="icone image pour téléchargement">
+						<img id="imageDisplay" src="#" alt="Image affichée ici" style="max-width: 100%; display: none;">
 					</div>
-					
-					<button id="btn-ad-photo">+ ajouter photo</button>
+					<input type="file" id="imageInput" accept="image/*">
+    				<button id="btn-ad-photo"> + Ajouter une photo</button>
+																																<!--bouton pour ajouter photo à telecharger-->
 					<p id="text-modal2">jpg, png : 4mo max</p>
 				</div>
 				<form id="formulaire3">
 					<label for="name">Titre</label>
-					<input class="modal2formulaire" type="text" name="title" id="title" autocomplete="text">
+					<input class="modal2formulaire" type="text" name="title" id="title" autocomplete="text">					<!--formulaire-->
 					<label for="text">Catégorie</label>
 					<select name="category" id="categorychoix">
-						<option value="id: 1, name: Objets">Objets</option>
-						<option value="id: 2, name: Appartements">Appartements</option>
-						<option value="id: 3, name: Hotels & restaurants">Hôtels et restaurants</option>
+						<option value="1`">Objets</option>
+						<option value="2">Appartements</option>											<!--formulaire deroulant-->
+						<option value="3">Hôtels et restaurants</option>
 					</select>
 				</form>
 				
-				<button id="btn-valider2">valider </button>
-				</div>
-			</div>
-		</aside>
-		<aside class="modal3-container3">
-			<div  class="overlay3  modal3-trigger3"></div>	
-			<div class="modal3" aria-modal="true" role="dialog" aria-labelledby="titlemodal" aria-describedby="dialog1Desc">
-				<div>
-					<button id="reviens-arriere-page2" class="modal3-trigger3"><i class="fa-solid fa-arrow-left"></i></button>
-					<button id= "trigger3" class="close-modal2
-					modal33-trigger3">X</button>
-				</div>
-				<h1 title="titlemodale3" id="titre-modale3">ajout photos</h1>
-				<div id="container-modale3">
-					
-					<button id="btn-valider3">valider </button>
+				<button id="btn-valider2">valider </button>																		<!--bouton de validation à téléchargement photo-->
 				</div>
 			</div>
 		</aside>
