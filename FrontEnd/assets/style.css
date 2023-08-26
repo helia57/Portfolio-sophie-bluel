@@ -656,25 +656,37 @@ i.fa-solid.fa-pen-to-square {
 #btn-ajouter-photos:hover, #btn-ajouter-photos:active {
 	background-color: rgba(14, 47, 40, 1);
 }
-.fa-solid.fa-trash-can.fa-xs::before {
+.fa-solid.fa-xs.fa-up-down-left-right::before {
 	position: absolute;
-	top: 6px;
-	right: 4px;
-	background: white;
-	padding: 4px;
+	width: 12px;
+	height: 14px;
+	top: 164px;
+	right: 513px;
+	background:black;
+	color:white;
+	padding: 6px 2px;
 	border: none;
 	font-size: 9px;
 	border-radius: 2px;
 }
-.delete {
+.fa-solid.fa-xs.fa-up-down-left-right:hover,.fa-solid.fa-xs.fa-trash-can:hover .fa-solid.fa-xs.fa-up-down-left-right:active, .fa-solid.fa-xs.fa-trash-can:active {
+	background-color: #0E2F28;
+	color: #D65353;
+}
+.fa-solid.fa-xs.fa-trash-can {
 	position: absolute;
-	top: 6px;
-	right: 4px;
-	background: white;
-	padding: 4px;
+	width: 13px;
+	height: 14px;	
+	background:black;
+	color:white;
+	padding: 6px 2px;
+	margin:-116px 44px;
 	border: none;
-	font-size: 9px;
 	border-radius: 2px;
+}
+.container-icons {
+	
+	padding: 0px 15px;
 }
 
 #btn-supp-gallerie {

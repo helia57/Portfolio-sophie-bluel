@@ -123,21 +123,14 @@ btnAjoutPhotoModal1.addEventListener("click", function (e) {
 
   // Pour ouvrir la modale2, on ajoute la classe "active" sur tout les element "triggers"
     modal2Container2.classList.add("active"),
-
-
-   
-
-
-    
     fermerModale2Overlay.classList.add("active")
-   
- 
-
-
     
 }); 
 btnFermerModale2.addEventListener("click", function (e) {
   modal2Container2.classList.remove("active")
-  fermerModale2Overlay.classList.remove("active")
+
 });
-console.log(btnFermerModale2)
+
+fermerModale2Overlay.addEventListener("click", function (e) {
+  modal2Container2.classList.remove("active")
+});
