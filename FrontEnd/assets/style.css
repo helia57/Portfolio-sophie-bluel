@@ -727,25 +727,7 @@ i.fa-solid.fa-pen-to-square {
 	transform:translate(-50%,-50%)
 	
 }
-.close-modal2 {
-	padding: 8px 10px;
-	border: none;
-	border-radius: 5px;
-	font-size: 18px;
-	position : absolute;
-	top: 10px;
-	right: 10px;
-	cursor: pointer;
-	background: #FFF;
-	border: #FFF;
-	color: #000;
 
-}
-.close-modal2:hover,.close-modal2:active  {
-	display:block;
-	background-color:rgba(14, 47, 40, 1);
-	color: #FFF;
-}
 #titre-modale2{
 	display: flex;
 	color: #000;
@@ -798,8 +780,8 @@ i.fa-solid.fa-pen-to-square {
 	font-weight: 500;
 	line-height: normal;
 	align-items: center;
-	padding: 8px 30px;
-	margin: 0px -7px;
+	padding: 8px 23px;
+	
 }
 #text-modal2 {
 	color: #444;
@@ -839,8 +821,43 @@ input.modal2formulaire {
 }
 #btn-valider2 {
 	display:flex;
-	margin: 0px 177px;
-	padding: 10px 60px;
+	width: 237px;
+	height: 36px;
+	margin: 0px 164px;
+	padding: 6px 88px;
+}
+/********** bouton nagivation modale 2 *************************/
+#reviens-arriere-page {
+	border-color:#3D3D3D;
+	padding: 8px 10px;
+	border: none;
+	border-radius: 5px;
+	font-size: 18px;
+	position : absolute;
+	top: 12px;
+	right: 591px;
+	cursor: pointer;
+	background: #FFF;
+	color: #3D3D3D;
+}
+.close-modal2 {
+	padding: 8px 10px;
+	border: none;
+	border-radius: 5px;
+	font-size: 18px;
+	position : absolute;
+	top: 10px;
+	right: 10px;
+	cursor: pointer;
+	background: #FFF;
+	border: #FFF;
+	color: #3D3D3D;
+
+}
+.close-modal2:hover,.close-modal2:active, #reviens-arriere-page:hover, #reviens-arriere-page:active {
+	display:block;
+	background-color:rgba(14, 47, 40, 1);
+	color: #FFF;
 }
 /******** bouton select *****************************/
 #categorychoix {
