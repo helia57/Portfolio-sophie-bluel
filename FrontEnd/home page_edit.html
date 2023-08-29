@@ -2,7 +2,7 @@
 <html lang="fr">
 	<head>
 		<meta charset="UTF-8">
-		<title>Sophie Bluel - Architecte d'intérieur_index</title>
+		<title>Sophie Bluel - Architecte d'intérieur</title>
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<link rel="preconnect" href="https://fonts.googleapis.com">
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -11,8 +11,8 @@
 		<meta name="description" content="Sophie Bluel, architecte d'interieur">
 		<link rel="stylesheet" href="assets/style.css">
 		<script src="assets/script/works.js" defer ></script>
+		<script src="assets/script/app.js" defer></script>
 		
-	</head>
 	<body>
 		<header>
 			<div class="wrapper">
@@ -40,8 +40,8 @@
 				<button id= "trigger" class="close-modal
 				modal-trigger">X</button>
 				<h1 title="titlemodale" id="titre-modale">galerie photo</h1>
+				<p class="popup"></p>
 				<div id="container-gallery-modale">
-
 				</div>
 				<p id="ligne">__________________________________________________________</p>
 				<button id="btn-ajouter-photos" class="btn-ajout-photos">ajouter une photo</button>
@@ -61,21 +61,21 @@
 				<div id="frame2-modale2">
 					<div id="telechgmntphoto">																					<!--div pour la photo à telecharger-->
 						<img id="icone-image" src="assets/icons/picture-svgrepo-com 1.png" alt="icone image pour téléchargement">
-						<img id="imageDisplay" src="#" alt="Image affichée ici" style="max-width: 100%; display: none;">
+						<img id="imageDisplay" src="#" alt="Image importé" style="max-width: 100%; display: none;">
 					</div>
-					<input type="file" id="imageInput" accept="image/*">
+					<input type="file" id="imageInput" accept="image/png, image/jpeg">
     				<button id="btn-ad-photo"> + Ajouter une photo</button>
 																																<!--bouton pour ajouter photo à telecharger-->
 					<p id="text-modal2">jpg, png : 4mo max</p>
 				</div>
 				<form id="formulaire3">
-					<label for="name">Titre</label>
-					<input class="modal2formulaire" type="text" name="title" id="title" autocomplete="text">					<!--formulaire-->
-					<label for="text">Catégorie</label>
-					<select name="category" id="categorychoix">
-						<option value="1`">Objets</option>
-						<option value="2">Appartements</option>											<!--formulaire deroulant-->
-						<option value="3">Hôtels et restaurants</option>
+					<label for="title">Titre</label>
+					<input class="modal2formulaire" type="text" name="title" id="title" autocomplete="text" required>					<!--formulaire-->
+					<label for="categorychoix">Catégorie</label>
+					<select name="category" id="categorychoix" required>
+						<option value="category=1">Objets</option>
+						<option value="category=2">Appartements</option>											<!--formulaire deroulant-->
+						<option value="category=3">Hôtels et restaurants</option>
 					</select>
 				</form>
 				
@@ -126,7 +126,7 @@
 				</ul>
 			</nav>
 		</footer>
-	<script src="assets/script/app.js"></script>
+	
 	</body>
 </html>
 
