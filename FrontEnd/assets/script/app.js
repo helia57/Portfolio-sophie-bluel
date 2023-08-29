@@ -1,6 +1,6 @@
 
  // Récupération de l'élément du DOM qui accueillera les projets: <section id = "container-gallery-modale">
-const baliseDivContainerGalleryModale = document.querySelector("#container-gallery-modale");
+ const baliseDivContainerGalleryModale = document.querySelector("#container-gallery-modale");
  // affichage de la modale 1
 const modalContainer = document.querySelector(".modal-container");
 const modalTriggers = document.querySelectorAll(".modal-trigger");
@@ -78,10 +78,15 @@ function toggleModal(e) {
     const figure = e.target.closest("figure");
     const id = figure.dataset.id;
     const effacerCode = await supprimerProjet(id);
-  })
-  
-};
+    switch (effacerCode) {
+        case 204:
+          figure.remove();
+          const galleryFigure = document.querySelector("#figure-" + id);
+          galleryFigure.remove();
 
+        }
+           
+});
 
 //**************************************************** */
 // fonction appel fetch "get" pour générer la galerie  */
@@ -116,7 +121,7 @@ async function genererGetWorks () {
   }
   return works
 
-}
+}}
 
 
 
