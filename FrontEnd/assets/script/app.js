@@ -35,7 +35,7 @@ function toggleModal(e) {
     const work = works[i] 
    
       //fiche projet dans une figure
-  let baliseFigureModale = document.createElement("figure");
+  const baliseFigureModale = document.createElement("figure");
   baliseFigureModale.dataset.id = work.id;
   baliseFigureModale.classList.add("works-projet-modale");
   baliseFigureModale.classList = "projets-modale";
@@ -60,8 +60,9 @@ function toggleModal(e) {
   iconCross.classList.add("fa-up-down-left-right");
   divIconCross.appendChild(iconCross);
   
-  //un bouton "poubelle"
+  //un bouton avec une icone "poubelle"
   const btnDelete = document.createElement("button");
+  btnDelete.dataset.id = work.id;
   btnDelete.innerHTML =  `<i class="fa-solid fa-trash-can"></i>`;
   btnDelete.classList.add("delete-button");
   baliseFigureModale.appendChild(btnDelete);
@@ -72,13 +73,14 @@ function toggleModal(e) {
   textCardElementModale.classList.add("text-miniature");
   baliseFigureModale.appendChild(textCardElementModale);
 
-  btnDelete.addEventListener("clic", () => {
-  supprimerProjet(work.id)
-  console.log(btnDelete)
+  // ajout d'un event pour la suppression d'un projet
+  btnDelete.addEventListener("click", async (e) => {
+    const figure = e.target.closest("figure");
+    const id = figure.dataset.id;
+    const effacerCode = await supprimerProjet(id);
+  })
   
-  });
-  
-}
+};
 
 
 //**************************************************** */
@@ -202,27 +204,13 @@ imageInput.addEventListener('change', function(event) {
 
 async function supprimerProjet(id) {
 
-
-
-
-
-  try {
-      const response = await fetch(`http://localhost:5678/api/works/${id}`, {
-          method: "DELETE",
-          headers: {
-              "Content-Type": "application/json",
-              "Authorization": "Bearer " + token
-          }
-      });
-      console.log(response)
-      if (response.ok) {
-          console.log("Projet supprimé avec succès.");
-      } else {
-          console.log("Erreur lors de la suppression.");
-      }
-  } catch (error) {
-      console.error("Erreur:", error);
-      console.log("Une erreur s'est produite lors de la suppression.");
-  }}
-}
-
+  const response = await fetch("http://localhost:5678/api/works/" + id, {
+    method: "DELETE",
+    headers: {
+      // Ajoute l'en-tête d'autorisation avec le jeton d'accès
+      Authorization: `Bearer ${token}`,
+    },
+  });
+  // Affiche la réponse dans la console
+  console.log(response);
+}} 
