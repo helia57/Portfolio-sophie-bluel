@@ -219,3 +219,62 @@ async function supprimerProjet(id) {
   // Affiche la réponse dans la console
   console.log(response);
 }} 
+
+//************************************************************************
+            //envoyer un nouveau "works" dans l'api via le formulaire
+
+//************************************************************************/
+const envoyerImageEtDonnees = async (imageUrl, titre, categorie) => {
+
+ // Parcourir l'option de la catégorie qui a été sélectionnée par le formulaire déroulant:
+const selectElement = document.querySelector("#categorychoix"); 
+const selectedOption = selectElement.options[selectElement.selectedIndex];
+const categoryId = selectedOption.value;
+
+console.log("Catégorie sélectionnée :", categoryId);
+
+  
+console.log(categoryId)
+  
+  
+  
+  
+    const formData = new FormData();
+    formData.append("image", imageUrl);
+    formData.append("title", titre);
+    formData.append("categoryId", categorie); // Assurez-vous que "categoryId" est correctement extrait du formulaire
+  
+    try {
+        const response = await fetch("http://localhost:5678/api/works", {
+            method: "POST", 
+            headers: { "Content-Type": "application/json" },
+            body: formData
+        });
+  
+        if (!response.ok) {
+            throw new Error("Erreur lors de l\'envoi des données");
+        }
+  
+        const data = await response.json();
+        console.log("Réponse de l\'API:", data);
+  
+  
+    } catch (error) {
+        console.error('Erreur:', error);
+        // Gérer les erreurs en conséquence
+    }
+  };
+  
+  // fonction d'envoi
+  btnValiderModal2.addEventListener("click", async function(event) {
+    event.preventDefault();
+      //Point d'entrée au DOM des differents champs
+    const titre = document.querySelector("#titleNewWorks").value;
+    const categorie = document.querySelector("#categorychoix").value;
+     // envoyer la requete à la condition que l'image et les champs ne soit pas vide
+     if (imageDisplay.src && imageDisplay.style.display !== "none" && titre.trim() !== "" && categorie.trim() !== "") {
+      await envoyerImageEtDonnees(imageDisplay.src, titre, categorie);
+  } else {
+      console.log("Veuillez remplir tous les champs du formulaire et sélectionner une image.");
+  }
+  });
