@@ -188,6 +188,7 @@ imageInput.addEventListener('change', function(event) {
 
         reader.onload = function(e) {
             imageDisplay.src = e.target.result;
+            imageUrl = URL.createObjectURL(selectedImage)
             imageDisplay.style.display = "block"; // Affiche l'image
             imageIconeImage.style.display ="none" ; // faire disparaitre l'icone image
             addPhotoButton.style.display ="none";   // faire disparaitre le bouton
@@ -201,7 +202,6 @@ imageInput.addEventListener('change', function(event) {
         imageDisplay.innerHTML ="";
     }
 });
-
 
 //*********************************************************** */
 //        suppression d'un projet (works)                             
@@ -224,34 +224,41 @@ async function supprimerProjet(id) {
             //envoyer un nouveau "works" dans l'api via le formulaire
 
 //************************************************************************/
-const envoyerImageEtDonnees = async (imageUrl, titre, categorie) => {
+const btnValiderNew = document.querySelector("#btn-valider2");
+let title = document.querySelector("#titleNewWorks");
+
+
+
+
+
+
 
  // Parcourir l'option de la catégorie qui a été sélectionnée par le formulaire déroulant:
-const selectElement = document.querySelector("#categorychoix"); 
-const selectedOption = selectElement.options[selectElement.selectedIndex];
-const categoryId = selectedOption.value;
 
-console.log("Catégorie sélectionnée :", categoryId);
 
   
-console.log(categoryId)
+
   
-  
-  
-  
+  const envoyerImageEtDonnees = async (imageUrl, titre, category) => {  
+    console.log(envoyerImageEtDonnees)
     const formData = new FormData();
     formData.append("image", imageUrl);
     formData.append("title", titre);
-    formData.append("categoryId", categorie); // Assurez-vous que "categoryId" est correctement extrait du formulaire
-  
+    formData.append("category", category); 
     try {
         const response = await fetch("http://localhost:5678/api/works", {
-            method: "POST", 
-            headers: { "Content-Type": "application/json" },
-            body: formData
+          method: 'POST',
+          body: formData,
+          headers: {
+            Authorization: `Bearer ${token}`,
+              "Accept" : 'application/json',
+              "content-type":'multipart/form-data'
+          
+          }
         });
   
         if (!response.ok) {
+          console.log(response)
             throw new Error("Erreur lors de l\'envoi des données");
         }
   
@@ -259,22 +266,42 @@ console.log(categoryId)
         console.log("Réponse de l\'API:", data);
   
   
-    } catch (error) {
-        console.error('Erreur:', error);
-        // Gérer les erreurs en conséquence
-    }
-  };
+        } catch (error) {
+            console.error('Erreur:', error);
+            // Gérer les erreurs en conséquence
+        }
+};
   
   // fonction d'envoi
-  btnValiderModal2.addEventListener("click", async function(event) {
+btnValiderNew.addEventListener("click", async function(event) {
     event.preventDefault();
+   
+
+    const selectElement = document.querySelector("#categorychoix"); 
+    const selectedOption = selectElement.options[selectElement.selectedIndex];
+    let category = selectedOption.value;
+
+    console.log("Catégorie sélectionnée :", category);
+
+
       //Point d'entrée au DOM des differents champs
-    const titre = document.querySelector("#titleNewWorks").value;
-    const categorie = document.querySelector("#categorychoix").value;
+
+
+    let titre = document.querySelector("#titleNewWorks").value;
+    console.log(titre)
+
+
+
+    let imageUrl = imageDisplay.src
+    
+    
+    console.log(imageUrl)
+
      // envoyer la requete à la condition que l'image et les champs ne soit pas vide
-     if (imageDisplay.src && imageDisplay.style.display !== "none" && titre.trim() !== "" && categorie.trim() !== "") {
-      await envoyerImageEtDonnees(imageDisplay.src, titre, categorie);
+     if (imageDisplay.src && imageDisplay.style.display !== "" && titre.trim() !== "" ) {
+      await envoyerImageEtDonnees(imageUrl, titre, category);
   } else {
       console.log("Veuillez remplir tous les champs du formulaire et sélectionner une image.");
+      
   }
-  });
+});
