@@ -164,7 +164,7 @@ btnNavigationArriere.addEventListener("click", function (e) {
 
 //***********importer une image*************************** */
 /*                                                         */
-/*    importer une image depuis son ordinateur                                                     */
+/*    importer une image depuis son ordinateur                                                     
 /********************************************************* */
 const imageInput = document.querySelector("#imageInput");
 const imageIconeImage = document.querySelector("#icone-image");
@@ -179,41 +179,34 @@ addPhotoButton.addEventListener('click', function() {
   imageInput.click(); // Clique sur l'élément d'entrée de fichier
 });
 
-// Écouteur pour l'élément d'entrée de fichier
+// Écouteur de l'évènement de l'imput lorsqu'il change lorsque le fichier image est chargé
 imageInput.addEventListener('change', function(event) {
-  selectedFile = event.target.files[0]; // Stocke le fichier sélectionné
-    
+  selectedFile = event.target.files[0]; // Stocke le fichier dans la variable "selectedFile"
+    // verifie qu'il y a bien un fichier
     if (selectedFile) {
-        const reader = new FileReader();
+        const reader = new FileReader();      // création d'un objet filereader qui permetttra la lecture du fichier
 
     
-
-        reader.onload = function(e) {
-            imageDisplay.src = e.target.result;
-            imageDisplay.style.display = "block"; // Affiche l'image
+        
+        reader.onload = function(e) {         // lorsque la fonction est chargé, lis le fichier
+            imageDisplay.src = e.target.result;  // definit la source de l'image dans la balise <img> (lecteurs d'ecrans)
+            imageDisplay.style.display = "block"; // Affiche l'image pour la rendre visible
             imageIconeImage.style.display ="none" ; // faire disparaitre l'icone image
             addPhotoButton.style.display ="none";   // faire disparaitre le bouton
             textInfoImage.style.display ="none";    // faire disparaitre le texte d'information de l'image
                  // faire disparaitre l'imput pour une seule image à la fois
             btnValiderModal2.classList.add("active")    // rendre actif le bouton de validation du formulaire 
-            console.log("Contenu de selectedFile :", selectedFile);
-            // selectedFile est défini avant d'appeler validerData
-           
-            // appel de la fonction d'envoi qui contient selectedFile
-
+                                   
+            // appel de la fonction veliderData qui contient "selectedFile"
             validerData(selectedFile);
 
-
           }
-        reader.readAsDataURL(selectedFile);
+        reader.readAsDataURL(selectedFile); 
         
           // Réinitialisation de la valeur de l'input file au rechargement de la page
         imageInput.value = ""; // Cela permet à l'utilisateur de sélectionner une nouvelle image
-        
-    }
-   
-   
-   
+      }
+     
 });
 
 //*********************************************************** */
@@ -221,17 +214,25 @@ imageInput.addEventListener('change', function(event) {
 //************************************************************ */
 
 async function supprimerProjet(id) {
-
-  const response = await fetch("http://localhost:5678/api/works/" + id, {
-    method: "DELETE",
-    headers: {
-      // Ajoute l'en-tête d'autorisation avec le jeton d'accès
-      Authorization: `Bearer ${token}`,
-    },
+  try {
+      const response = await fetch("http://localhost:5678/api/works/" + id, {
+        method: "DELETE",
+        headers: {
+          // Ajoute l'en-tête d'autorisation avec le jeton d'accès
+          Authorization: `Bearer ${token}`,
+        },
   });
-  // Affiche la réponse dans la console
-  console.log(response);
-}} 
+        console.log(response)	
+      if (response.ok) {	
+          console.log("Projet supprimé avec succès.");	
+      } else {	
+          console.log("Erreur lors de la suppression.");	
+      }	
+  } catch (error) {	
+      console.error("Erreur:", error);	
+      console.log("Une erreur s'est produite lors de la suppression.");	
+  }};	
+
 
 //************************************************************************
             //envoyer un nouveau "works" dans l'api via le formulaire
@@ -241,7 +242,7 @@ const btnValiderNew = document.querySelector("#btn-valider2");
 let titre = document.querySelector("#titleNewWorks");
 let category ; 
 let imageFile ;
-let selectedFile;
+
 function validerData(selectedFile) {
     btnValiderNew.addEventListener("click", async function(event) {
         event.preventDefault();
@@ -259,7 +260,7 @@ function validerData(selectedFile) {
 
         imageFile = selectedFile;
         // calcul de la taille de l'image et taille maximum
-        const tailleImage = imageFile.Content-Length;
+        const tailleImage = imageFile.ContentLength;
         const TailleMax = 4 * 1024 * 1024;
         
 
@@ -271,11 +272,10 @@ function validerData(selectedFile) {
          console.log(imageFile);
         // Appel de la fonction d'envoi
         await envoyerImageEtDonnees(imageFile, titre, category);
+
+
     });
 }
-
-
-
 
 
 // Appelez la fonction validerData pour la configurer
@@ -311,19 +311,18 @@ const envoyerImageEtDonnees = async (imageFile, titre, category) => {
   });
         
           if (!response.ok) {
-              console.log(response);
+              
               throw new Error("Erreur lors de l'envoi des données");
           }
 
           const data = await response.json();
-          console.log("Réponse de l'API:", data);
-
+          // Gére les erreurs
       } catch (error) {
           console.log("Erreur:", error);
-          console.log("Contenu de la réponse:", await response.text());
-          // Gérer les erreurs en conséquence
+          
+           
       }
   } else {
       console.log("Veuillez remplir tous les champs du formulaire et sélectionner une image.");
   }
-};
+}};
