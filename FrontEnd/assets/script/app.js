@@ -169,38 +169,51 @@ btnNavigationArriere.addEventListener("click", function (e) {
 const imageInput = document.querySelector("#imageInput");
 const imageIconeImage = document.querySelector("#icone-image");
 const addPhotoButton = document.querySelector("#btn-ad-photo");
-const imageDisplay = document.querySelector("#imageDisplay");
+let imageDisplay = document.querySelector("#imageDisplay");
 const textInfoImage = document.querySelector("#text-modal2");
 
+let selectedFile = ""; // stock l'url de l'image
 
 // Écouteur pour le bouton "Ajouter une photo"
 addPhotoButton.addEventListener('click', function() {
-  imageDisplay.innerHTML ="";  
   imageInput.click(); // Clique sur l'élément d'entrée de fichier
 });
 
 // Écouteur pour l'élément d'entrée de fichier
 imageInput.addEventListener('change', function(event) {
-    const selectedImage = event.target.files[0];
+  selectedFile = event.target.files[0]; // Stocke le fichier sélectionné
     
-    if (selectedImage) {
+    if (selectedFile) {
         const reader = new FileReader();
+
+    
 
         reader.onload = function(e) {
             imageDisplay.src = e.target.result;
-            imageUrl = URL.createObjectURL(selectedImage)
             imageDisplay.style.display = "block"; // Affiche l'image
             imageIconeImage.style.display ="none" ; // faire disparaitre l'icone image
             addPhotoButton.style.display ="none";   // faire disparaitre le bouton
             textInfoImage.style.display ="none";    // faire disparaitre le texte d'information de l'image
-            imageInput.style.display ="none";       // faire disparaitre l'imput pour une seule image à la fois
+                 // faire disparaitre l'imput pour une seule image à la fois
             btnValiderModal2.classList.add("active")    // rendre actif le bouton de validation du formulaire 
+            console.log("Contenu de selectedFile :", selectedFile);
+            // selectedFile est défini avant d'appeler validerData
+           
+            // appel de la fonction d'envoi qui contient selectedFile
+
+            validerData(selectedFile);
+
+
           }
-        reader.readAsDataURL(selectedImage);
+        reader.readAsDataURL(selectedFile);
+        
           // Réinitialisation de la valeur de l'input file au rechargement de la page
         imageInput.value = ""; // Cela permet à l'utilisateur de sélectionner une nouvelle image
-        imageDisplay.innerHTML ="";
+        
     }
+   
+   
+   
 });
 
 //*********************************************************** */
@@ -225,83 +238,92 @@ async function supprimerProjet(id) {
 
 //************************************************************************/
 const btnValiderNew = document.querySelector("#btn-valider2");
-let title = document.querySelector("#titleNewWorks");
+let titre = document.querySelector("#titleNewWorks");
+let category ; 
+let imageFile ;
+let selectedFile;
+function validerData(selectedFile) {
+    btnValiderNew.addEventListener("click", async function(event) {
+        event.preventDefault();
+
+        // Parcourir l'option de la catégorie qui a été sélectionnée par le formulaire déroulant:
+        const selectElement = document.querySelector("#categorychoix");
+        const selectedOption = selectElement.options[selectElement.selectedIndex];
+        category = selectedOption.value;
+
+        console.log("Catégorie sélectionnée :", category);
+
+        //Point d'entrée au DOM des differents champs
+        titre = document.querySelector("#titleNewWorks").value;
+        console.log(titre);
+
+        imageFile = selectedFile;
+        // calcul de la taille de l'image et taille maximum
+        const tailleImage = imageFile.Content-Length;
+        const TailleMax = 4 * 1024 * 1024;
+        
+
+        // Vérifiez que la taille du fichier image est inferieur à la taille Max sinon renvoyé erreur
+        if (tailleImage  > TailleMax) {
+            console.log("Le fichier est vide ou dépasse la taille maximale de 4 Mo.");
+            return;
+        }
+         console.log(imageFile);
+        // Appel de la fonction d'envoi
+        await envoyerImageEtDonnees(imageFile, titre, category);
+    });
+}
 
 
 
 
 
-
-
- // Parcourir l'option de la catégorie qui a été sélectionnée par le formulaire déroulant:
-
-
+// Appelez la fonction validerData pour la configurer
+validerData();
+let response; // Déclarer response
+const envoyerImageEtDonnees = async (imageFile, titre, category) => {
   
 
+  // Vérifier que les champs ne sont pas vides
+  if (titre.trim() !== "" && category !== "") {
+      const formData = new FormData();
   
-  const envoyerImageEtDonnees = async (imageUrl, titre, category) => {  
-    console.log(envoyerImageEtDonnees)
-    const formData = new FormData();
-    formData.append("image", imageUrl);
-    formData.append("title", titre);
-    formData.append("category", category); 
-    try {
-        const response = await fetch("http://localhost:5678/api/works", {
-          method: 'POST',
-          body: formData,
-          headers: {
-            Authorization: `Bearer ${token}`,
-              "Accept" : 'application/json',
-              "content-type":'multipart/form-data'
-          
+      // creation du form Data
+      
+      formData.append("title" , titre);
+      formData.append("image", imageFile);
+      formData.append("category", category);
+
+      for (const pair of formData.entries()) {
+        console.log(pair[0], pair[1]);
+      }
+
+      try {
+        
+       const response = await fetch("http://localhost:5678/api/works", {
+    method: "POST",
+    headers: {
+      // Ajoute l'en-tête d'autorisation avec le jeton d'accès
+      Authorization: `Bearer ${token}`,
+    },
+    // Ajoute les données du formulaire à la requête
+    body: formData,
+  });
+        
+          if (!response.ok) {
+              console.log(response);
+              throw new Error("Erreur lors de l'envoi des données");
           }
-        });
-  
-        if (!response.ok) {
-          console.log(response)
-            throw new Error("Erreur lors de l\'envoi des données");
-        }
-  
-        const data = await response.json();
-        console.log("Réponse de l\'API:", data);
-  
-  
-        } catch (error) {
-            console.error('Erreur:', error);
-            // Gérer les erreurs en conséquence
-        }
-};
-  
-  // fonction d'envoi
-btnValiderNew.addEventListener("click", async function(event) {
-    event.preventDefault();
-   
 
-    const selectElement = document.querySelector("#categorychoix"); 
-    const selectedOption = selectElement.options[selectElement.selectedIndex];
-    let category = selectedOption.value;
+          const data = await response.json();
+          console.log("Réponse de l'API:", data);
 
-    console.log("Catégorie sélectionnée :", category);
-
-
-      //Point d'entrée au DOM des differents champs
-
-
-    let titre = document.querySelector("#titleNewWorks").value;
-    console.log(titre)
-
-
-
-    let imageUrl = imageDisplay.src
-    
-    
-    console.log(imageUrl)
-
-     // envoyer la requete à la condition que l'image et les champs ne soit pas vide
-     if (imageDisplay.src && imageDisplay.style.display !== "" && titre.trim() !== "" ) {
-      await envoyerImageEtDonnees(imageUrl, titre, category);
+      } catch (error) {
+          console.log("Erreur:", error);
+          console.log("Contenu de la réponse:", await response.text());
+          // Gérer les erreurs en conséquence
+      }
   } else {
       console.log("Veuillez remplir tous les champs du formulaire et sélectionner une image.");
-      
   }
-});
+};
