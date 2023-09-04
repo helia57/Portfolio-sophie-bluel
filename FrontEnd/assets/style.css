@@ -923,3 +923,20 @@ img#imageDisplay {
 img#icone-image {
 	display: flex;
 }
+.popupDiv p {
+	display: flex;
+	height: 30px;
+	width: 100%;
+	background-color: white;
+	color: crimson;
+	font-size: 16px;
+	font-weight: 600;
+	justify-content: center;
+	font-family: Work Sans;
+}
+.popupDiv {
+	display: block;
+}
+#logout {
+	cursor: pointer;
+}

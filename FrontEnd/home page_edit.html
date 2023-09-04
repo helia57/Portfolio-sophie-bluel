@@ -24,10 +24,10 @@
 				<div class="frame">
 					<h1>Sophie Bluel <span>Architecte d'intérieur</span></h1>
 					<nav>
-						<div>
+						<div id="divNav">
 							<h4><b>projets</b></h4>
 							<a href="#mon-ancre"><h4>contact</h4></a>
-							<a href = "login.html"><h4>login</h4></a>
+							<h4 id="logout">logout</h4></a>
 							<a href="https://www.instagram.com" target="_blank"><h4><img id="insta" src="assets/icons/instagram.png" alt="Instagram"></h4></a>
 						</div>
 					</nav>
@@ -39,8 +39,9 @@
 			<div class="modal" aria-modal="true" role="dialog" aria-labelledby="titlemodal" aria-describedby="dialog1Desc">
 				<button id= "trigger" class="close-modal
 				modal-trigger">X</button>
+				<div class= "popup"></div>
 				<h1 title="titlemodale" id="titre-modale">galerie photo</h1>
-				<p class="popup"></p>
+				<div class= "popup"></div>
 				<div id="container-gallery-modale">
 				</div>
 				<p id="ligne">__________________________________________________________</p>
@@ -63,7 +64,7 @@
 						<img id="icone-image" src="assets/icons/picture-svgrepo-com 1.png" alt="icone image pour téléchargement">
 						<img id="imageDisplay" src="#" alt="Image importé" style="max-width: 100%; display: none;">
 					</div>
-					<input type="file" id="imageInput" accept="image/png, image/jpeg">
+					<input  name= "image" type="file" id="imageInput" accept="image/png, image/jpeg">
     				<button id="btn-ad-photo"> + Ajouter photo</button>
 																																<!--bouton pour ajouter photo à telecharger-->
 					<p id="text-modal2">jpg, png : 4mo max</p>

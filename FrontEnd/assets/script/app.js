@@ -20,6 +20,35 @@ const fermerModale2Overlay = document.querySelector(".overlay2");
 const token = sessionStorage.accessToken;
 console.log(token)
 
+//****************************************************** */
+/*                                                        */
+/*                 logout et token                        */
+/*                                                        */
+/******************************************************** */
+
+// Point d'entrée au DOM du bouton logout
+const BtnLogout = document.querySelector("#logout");
+const BtnPublierChangement = document.querySelector("#publier-changements");
+
+function loginRetirer() {
+// ecoute du bouton du bouton "logout" et suppression du token. 
+  BtnLogout.addEventListener("click", function() {
+    sessionStorage.removeItem("accessToken");
+    window.location.href = "home page.html";
+  });
+};
+
+loginRetirer();
+
+function publierChangement() {
+  BtnPublierChangement.addEventListener("click", function() {
+    sessionStorage.removeItem("accessToken");
+    window.location.href = "home page.html";
+  })
+};
+
+publierChangement();
+
 
 /************************************ */
 // fonction generer galerie modal     */
@@ -29,7 +58,7 @@ function toggleModal(e) {
   
   modalContainer.classList.toggle("active");
   
-  baliseDivContainerGalleryModale.innerHTML ="";
+  baliseDivContainerGalleryModale.innerHTML =""; 
   for (let i = 0; i < works.length; i++) {
     
     const work = works[i] 
@@ -75,17 +104,19 @@ function toggleModal(e) {
 
   // ajout d'un event pour la suppression d'un projet
   btnDelete.addEventListener("click", async (e) => {
-    const figure = e.target.closest("figure");
-    const id = figure.dataset.id;
-    const effacerCode = await supprimerProjet(id);
-    switch (effacerCode) {
+    e.preventDefault ()
+    const figure = e.target.closest("figure"); // cherche l'élément HTML le plus proche dans la hiérarchie "figure"
+    const id = figure.dataset.id;             // extrait l'id du bouton choisi pour suppression
+    const effacerCode = supprimerProjet(id); // le resultat de la fonction "supprimerProjet" récupere l'Id selectionné, qui est stocké dans la variable effacercode
+    switch (effacerCode) {                          // selon les cas, afficher un message 
         case 204:
-          figure.remove();
-          const galleryFigure = document.querySelector("#figure-" + id);
-          galleryFigure.remove();
-
+          figure.remove(id);                                                            
+          
+        	console.log("Votre image a bien été prise en compte.");
+          break
         }
-           
+        
+        
 });
 
 //**************************************************** */
@@ -160,7 +191,7 @@ btnNavigationArriere.addEventListener("click", function (e) {
   modalContainer.classList.add("active"),
   modalTriggers.forEach(trigger => trigger.classList.add("active"))
 });
-
+btnValiderModal2.classList.remove("active")
 
 //***********importer une image*************************** */
 /*                                                         */
@@ -183,6 +214,9 @@ addPhotoButton.addEventListener('click', function() {
 imageInput.addEventListener('change', function(event) {
   selectedFile = event.target.files[0]; // Stocke le fichier dans la variable "selectedFile"
     // verifie qu'il y a bien un fichier
+    // appel de la fonction veliderData qui contient "selectedFile"
+    validerData(selectedFile);
+
     if (selectedFile) {
         const reader = new FileReader();      // création d'un objet filereader qui permetttra la lecture du fichier
 
@@ -197,8 +231,7 @@ imageInput.addEventListener('change', function(event) {
                  // faire disparaitre l'imput pour une seule image à la fois
             btnValiderModal2.classList.add("active")    // rendre actif le bouton de validation du formulaire 
                                    
-            // appel de la fonction veliderData qui contient "selectedFile"
-            validerData(selectedFile);
+            
 
           }
         reader.readAsDataURL(selectedFile); 
@@ -218,21 +251,37 @@ async function supprimerProjet(id) {
       const response = await fetch("http://localhost:5678/api/works/" + id, {
         method: "DELETE",
         headers: {
+          
           // Ajoute l'en-tête d'autorisation avec le jeton d'accès
-          Authorization: `Bearer ${token}`,
+          'Authorization': `Bearer ${token}`,
+          'accept': 'application/json',
         },
   });
+
+
         console.log(response)	
-      if (response.ok) {	
-          console.log("Projet supprimé avec succès.");	
+      if (response.ok) {
+        // recharge la ressource depuis l'URL actuelle.
+        location.reload()
+        
+        
+
+
+        console.log(response.status)
+       
+        console.log("Projet supprimé avec succès.");
+        
       } else {	
           console.log("Erreur lors de la suppression.");	
       }	
+
+
+
   } catch (error) {	
       console.error("Erreur:", error);	
       console.log("Une erreur s'est produite lors de la suppression.");	
   }};	
-
+  
 
 //************************************************************************
             //envoyer un nouveau "works" dans l'api via le formulaire
@@ -242,6 +291,8 @@ const btnValiderNew = document.querySelector("#btn-valider2");
 let titre = document.querySelector("#titleNewWorks");
 let category ; 
 let imageFile ;
+const tailleMax = 4 * 1024 * 1024; // taille max à 4 Mo
+const tailleImage = selectedFile.size;
 
 function validerData(selectedFile) {
     btnValiderNew.addEventListener("click", async function(event) {
@@ -257,29 +308,35 @@ function validerData(selectedFile) {
         //Point d'entrée au DOM des differents champs
         titre = document.querySelector("#titleNewWorks").value;
         console.log(titre);
-
-        imageFile = selectedFile;
-        // calcul de la taille de l'image et taille maximum
-        const tailleImage = imageFile.ContentLength;
-        const TailleMax = 4 * 1024 * 1024;
         
-
-        // Vérifiez que la taille du fichier image est inferieur à la taille Max sinon renvoyé erreur
-        if (tailleImage  > TailleMax) {
+        imageFile = selectedFile;
+        
+         if  (imageFile === 0) {
             console.log("Le fichier est vide ou dépasse la taille maximale de 4 Mo.");
-            return;
+          return 
+         }
+           
+        // Vérifiez que la taille du fichier image est inferieur à la taille Max sinon renvoie une erreur
+        if (tailleImage  > tailleMax) {
+            console.log("Le fichier est vide ou dépasse la taille maximale de 4 Mo.");
+          return;
         }
-         console.log(imageFile);
+        
         // Appel de la fonction d'envoi
-        await envoyerImageEtDonnees(imageFile, titre, category);
+          await envoyerImageEtDonnees(imageFile, titre, category);
 
 
     });
+    
+
 }
+
 
 
 // Appelez la fonction validerData pour la configurer
 validerData();
+
+
 let response; // Déclarer response
 const envoyerImageEtDonnees = async (imageFile, titre, category) => {
   
@@ -300,15 +357,15 @@ const envoyerImageEtDonnees = async (imageFile, titre, category) => {
 
       try {
         
-       const response = await fetch("http://localhost:5678/api/works", {
-    method: "POST",
-    headers: {
-      // Ajoute l'en-tête d'autorisation avec le jeton d'accès
-      Authorization: `Bearer ${token}`,
-    },
-    // Ajoute les données du formulaire à la requête
-    body: formData,
-  });
+       let response = await fetch("http://localhost:5678/api/works", {
+          method: "POST",
+          headers: {
+          // Ajoute l'en-tête d'autorisation avec le jeton d'accès
+          Authorization: `Bearer ${token}`,
+          },
+          // Ajoute les données du formulaire à la requête
+          body: formData,
+        });
         
           if (!response.ok) {
               
@@ -316,6 +373,8 @@ const envoyerImageEtDonnees = async (imageFile, titre, category) => {
           }
 
           const data = await response.json();
+          location.reload()
+          console.log(data)
           // Gére les erreurs
       } catch (error) {
           console.log("Erreur:", error);
@@ -326,3 +385,4 @@ const envoyerImageEtDonnees = async (imageFile, titre, category) => {
       console.log("Veuillez remplir tous les champs du formulaire et sélectionner une image.");
   }
 }};
+
