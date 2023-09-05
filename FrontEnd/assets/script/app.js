@@ -20,6 +20,18 @@ const fermerModale2Overlay = document.querySelector(".overlay2");
 const token = sessionStorage.accessToken;
 console.log(token)
 
+// affichage de la gestion des erreurs(modal2)
+const popup1 = document.querySelector("#popup1");
+const error1 = document.createElement("p");
+popup1.append(error1);
+
+// affichage de la gestion des erreurs(modal2)
+const popup2 = document.querySelector("#popup2");
+const error = document.createElement("p");
+popup2.append(error);
+
+
+
 //****************************************************** */
 /*                                                        */
 /*                 logout et token                        */
@@ -35,18 +47,19 @@ function loginRetirer() {
   BtnLogout.addEventListener("click", function() {
     sessionStorage.removeItem("accessToken");
     window.location.href = "home page.html";
+    return error.innerText ="vous avez été déconnecter"
   });
 };
-
+// appel de la fonction loginRetirer
 loginRetirer();
-
+// ecoute du bouton du bouton "logout" et suppression du token. 
 function publierChangement() {
   BtnPublierChangement.addEventListener("click", function() {
     sessionStorage.removeItem("accessToken");
     window.location.href = "home page.html";
   })
 };
-
+// appel de la fonction loginRetirer
 publierChangement();
 
 
@@ -111,8 +124,7 @@ function toggleModal(e) {
     switch (effacerCode) {                          // selon les cas, afficher un message 
         case 204:
           figure.remove(id);                                                            
-          
-        	console.log("Votre image a bien été prise en compte.");
+          return error1.innerText ="Votre image a été supprimée.";
           break
         }
         
@@ -263,23 +275,19 @@ async function supprimerProjet(id) {
       if (response.ok) {
         // recharge la ressource depuis l'URL actuelle.
         location.reload()
-        
-        
-
-
-        console.log(response.status)
-       
-        console.log("Projet supprimé avec succès.");
+        return setTimeout(function () {
+          error1.innerText =("Projet supprimé avec succès.");
+        }, "5000");
         
       } else {	
-          console.log("Erreur lors de la suppression.");	
+        return error1.innerText =("Erreur lors de la suppression.");	
       }	
 
 
 
   } catch (error) {	
       console.error("Erreur:", error);	
-      console.log("Une erreur s'est produite lors de la suppression.");	
+      return error1.innerText = " problème de connexion API.";	
   }};	
   
 
@@ -302,42 +310,30 @@ function validerData(selectedFile) {
         const selectElement = document.querySelector("#categorychoix");
         const selectedOption = selectElement.options[selectElement.selectedIndex];
         category = selectedOption.value;
-
-        console.log("Catégorie sélectionnée :", category);
-
+                
         //Point d'entrée au DOM des differents champs
         titre = document.querySelector("#titleNewWorks").value;
-        console.log(titre);
-        
+             
         imageFile = selectedFile;
-        
-         if  (imageFile === 0) {
-            console.log("Le fichier est vide ou dépasse la taille maximale de 4 Mo.");
+        if  (imageFile === 0) {
+            console.log("Le fichier est vide.");
           return 
          }
            
         // Vérifiez que la taille du fichier image est inferieur à la taille Max sinon renvoie une erreur
         if (tailleImage  > tailleMax) {
-            console.log("Le fichier est vide ou dépasse la taille maximale de 4 Mo.");
+          return error.innerText = "dépasse la taille maximale de 4 Mo.";
           return;
         }
-        
-        // Appel de la fonction d'envoi
+         // Appel de la fonction d'envoi
           await envoyerImageEtDonnees(imageFile, titre, category);
-
-
     });
-    
 
 }
-
-
 
 // Appelez la fonction validerData pour la configurer
 validerData();
 
-
-let response; // Déclarer response
 const envoyerImageEtDonnees = async (imageFile, titre, category) => {
   
 
@@ -350,10 +346,6 @@ const envoyerImageEtDonnees = async (imageFile, titre, category) => {
       formData.append("title" , titre);
       formData.append("image", imageFile);
       formData.append("category", category);
-
-      for (const pair of formData.entries()) {
-        console.log(pair[0], pair[1]);
-      }
 
       try {
         
@@ -369,20 +361,23 @@ const envoyerImageEtDonnees = async (imageFile, titre, category) => {
         
           if (!response.ok) {
               
-              throw new Error("Erreur lors de l'envoi des données");
+            return error.innerText ="Erreur lors de l'envoi des données";
           }
 
           const data = await response.json();
           location.reload()
-          console.log(data)
+          return setTimeout(() => {
+            error.innerText ="Votre nouveau projet a été ajouté avec succes"
+          },"1000");
+         
           // Gére les erreurs
       } catch (error) {
-          console.log("Erreur:", error);
+        return error.innerText =("Erreur:", error);
           
            
       }
   } else {
-      console.log("Veuillez remplir tous les champs du formulaire et sélectionner une image.");
+    error.innerText = ("Veuillez remplir tous les champs du formulaire et/ou sélectionner une image.");
   }
 }};
 

@@ -655,12 +655,12 @@ i.fa-solid.fa-pen-to-square {
 .fa-solid.fa-up-down-left-right::before {
 	position: absolute;
 	width: 10px;
-	height: 12px;
-	top: 195px;
+	height: 11px;
+	top: 235px;
 	right: 544px;
 	background:black;
 	color:white;
-	padding: 3px 2px;
+	padding: 3px 3px;
 	border: none;
 	font-size: 10px;
 	border-radius: 2px;
@@ -836,6 +836,25 @@ input.modal2formulaire {
 	height: 36px;
 	margin: 0px 164px;
 	padding: 6px 88px;
+	background-color: #A7A7A7;
+	color: #FFF;
+	border-color: #A7A7A7;
+}
+#btn-valider2.active {
+	display:flex;
+	width: 237px;
+	height: 36px;
+	margin: 0px 164px;
+	padding: 6px 88px;
+	
+	text-align: center;
+	font-family: Syne;
+	font-size: 14px;
+	font-style: normal;
+	color: #FFF;
+	font-weight: 700;
+	line-height: normal;
+	background-color: #1D6154;
 }
 /********** bouton nagivation modale 2 *************************/
 #reviens-arriere-page {
@@ -923,7 +942,7 @@ img#imageDisplay {
 img#icone-image {
 	display: flex;
 }
-.popupDiv p {
+#popup2, #popup1 {
 	display: flex;
 	height: 30px;
 	width: 100%;
@@ -933,9 +952,11 @@ img#icone-image {
 	font-weight: 600;
 	justify-content: center;
 	font-family: Work Sans;
+	margin: 10px;
 }
-.popupDiv {
-	display: block;
+#popup2, #popup1 {
+	display: flex;
+	height: 20px;
 }
 #logout {
 	cursor: pointer;

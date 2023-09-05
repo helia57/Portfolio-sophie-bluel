@@ -75,7 +75,8 @@ async function createProject(argument)   {
     }
     return 
 
-}    
+} 
+   
  /************************************************ */   
 //* Récupération des projets depuis l'API  
  /************************************************ */       
@@ -151,3 +152,4 @@ async function trierParCategoryId(works) {
         });    
        
     }
+
