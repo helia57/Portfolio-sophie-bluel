@@ -274,10 +274,10 @@ async function supprimerProjet(id) {
         console.log(response)	
       if (response.ok) {
         // recharge la ressource depuis l'URL actuelle.
+
         location.reload()
-        return setTimeout(function () {
-          error1.innerText =("Projet supprimé avec succès.");
-        }, "5000");
+        return error1.innerText =("Projet supprimé avec succès.");
+        
         
       } else {	
         return error1.innerText =("Erreur lors de la suppression.");	

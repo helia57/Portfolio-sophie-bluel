@@ -19,7 +19,7 @@
 				<aside class="mode-edition">
 					<i class="fa-solid fa-pen-to-square"></i>
 					<p id="text-edition">Mode édition</p>
-					<a href ="home page.html"><button  id="publier-changements" >Publier les changements</button></a> 
+					<a href ="home_page.html"><div  id="publier-changements" >Publier les changements</div></a> 
 				</aside>
 				<div class="frame">
 					<h1>Sophie Bluel <span>Architecte d'intérieur</span></h1>
@@ -27,7 +27,7 @@
 						<div id="divNav">
 							<h4><b>projets</b></h4>
 							<a href="#mon-ancre"><h4>contact</h4></a>
-							<h4 id="logout">logout</h4></a>
+							<h4 id="logout">logout</h4>
 							<a href="https://www.instagram.com" target="_blank"><h4><img id="insta" src="assets/icons/instagram.png" alt="Instagram"></h4></a>
 						</div>
 					</nav>
@@ -36,10 +36,10 @@
 		</header>
 		<aside class="modal-container">
 			<div  class="overlay  modal-trigger"></div>
-			<div class="modal" aria-modal="true" role="dialog" aria-labelledby="titlemodal" aria-describedby="dialog1Desc">
+			<div class="modal" aria-modal="true" role="dialog" aria-label ="fenetre de modification supprimer un projet">
 				<button id= "trigger" class="close-modal
 				modal-trigger">X</button>
-				<h1 title="titlemodale" id="titre-modale">galerie photo</h1>
+				<h2 title="titlemodale" id="titre-modale">galerie photo</h2>
 				<div id= "popup1"></div>
 				<div id="container-gallery-modale">
 				</div>
@@ -49,18 +49,19 @@
 			</div>
 		</aside>
 		<aside class="modal2-container2">
-			<div  class="overlay2  modal2-trigger2"></div>	
-			<div class="modal2" aria-modal="true" role="dialog" aria-labelledby="titlemodal2" aria-describedby="dialog2Desc">
+			<div  class="overlay2  modal2-trigger2">
+			</div>	
+			<div class="modal2" aria-modal="true" role="dialog" aria-label="fenetre de modification ajouter un projet" >
 				<div class="btn-nagivation">
 					<button id="reviens-arriere-page" class="modal2-trigger2"><i class="fa-solid fa-arrow-left"></i></button>		<!--div+bouton de navigation fermer/retour arriere--> 
 					<button id= "trigger2" class="close-modal2
 					modal2-trigger2">X</button>
 				</div>
-				<h1 title="titlemodale2" id="titre-modale2">ajout photos</h1>														<!--titre modal2-->
+				<h2 title="titlemodale2" id="titre-modale2">ajout photos</h2>														<!--titre modal2-->
 				<div id="popup2"></div>													
 				<div id="frame2-modale2">
 					<div id="telechgmntphoto">																					<!--div pour la photo à telecharger-->
-						<img id="icone-image" src="assets/icons/picture-svgrepo-com 1.png" alt="icone image pour téléchargement">
+						<img id="icone-image" src="assets/icons/picture-svgrepo-com.png" alt="icone image pour téléchargement">
 						<img id="imageDisplay" src="#" alt="Image importé" style="max-width: 100%; display: none;">
 					</div>
 					<input  name= "image" type="file" id="imageInput" accept="image/png, image/jpeg">
@@ -70,17 +71,16 @@
 				</div>
 				<form id="formulaire3">
 					<label for="titleNewWorks">Titre</label>
-					<input class="modal2formulaire" type="text" name="title" id="titleNewWorks"required>					<!--formulaire-->
+					<input class="modal2formulaire" type="text" name="title" id="titleNewWorks" required>					<!--formulaire-->
 					<label for="categorychoix">Catégorie</label>
 					<select name="category" id="categorychoix" required>
+						<option value="">catégorie à définir ici</option>
 						<option value="1">Objets</option>
 						<option value="2">Appartements</option>											<!--formulaire deroulant-->
 						<option value="3">Hôtels et restaurants</option>
 					</select>
 				</form>
-				
 				<button id="btn-valider2">valider </button>																		<!--bouton de validation à téléchargement photo-->
-				</div>
 			</div>
 		</aside>
 		<main>
@@ -89,7 +89,7 @@
 					<img src="assets/images/sophie-bluel.png" alt="image sophieBluel">
 				</figure>
 				<article>
-					<h2>Designer d'espace</h2>
+					<h3>Designer d'espace</h3>
 					<p>Je raconte votre histoire, je valorise vos idées. Je vous accompagne de la conception à la livraison finale du chantier.</p>
 					<p>Chaque projet sera étudié en commun, de façon à mettre en valeur les volumes, les matières et les couleurs dans le respect de l'esprit des lieux et le choix adapté des matériaux. Le suivi du chantier sera assuré dans le souci du détail, le respect du planning et du budget.</p>
 					<p>En cas de besoin, une équipe pluridisciplinaire peut-être constituée : architecte DPLG, décorateur(trice)</p>
@@ -98,27 +98,25 @@
 				
 			<section id="portfolio">
 				<div class="container2">
-					<h2>Mes projets</h2>
+					<h3>Mes projets</h3>
 					<i class="fa-regular fa-pen-to-square fa-xl" style="color: #0e091a;"></i>
 					<button id="modal-btn" class="modal-btn modal-trigger">modifier</button>
 				</div>
-				
 			</section>
 			<section id="contact">
-				<h2>Contact</h2>
+				<h3>Contact</h3>
 				<p id="mon-ancre">Vous avez un projet ? Discutons-en !</p>
-				<form action="" method="post">
+				<form action="#" method="post">
 					<label for="name">Nom</label>
 					<input type="text" name="name" id="name" autocomplete="Name">
 					<label for="email">Email</label>
 					<input type="email" name="email" id="email" autocomplete="email">
 					<label for="message">Message</label>
 					<textarea name="message" id="message" cols="30" rows="10"></textarea>
-					<input type="submit" value="Envoyer" id="envoyer-contact" autocomplete="envoyer">
+					<input type="submit" value="Envoyer" id="envoyer-contact">
 				</form>
 			</section>
 		</main>
-
 		<footer>
 			<nav>
 				<ul>
@@ -126,7 +124,6 @@
 				</ul>
 			</nav>
 		</footer>
-	
 	</body>
 </html>
 
