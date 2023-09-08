@@ -46,7 +46,7 @@ function loginRetirer() {
 // ecoute du bouton du bouton "logout" et suppression du token. 
   BtnLogout.addEventListener("click", function() {
     sessionStorage.removeItem("accessToken");
-    window.location.href = "home_page.html";
+    window.location.href = "index.html";
     return error.innerText ="vous avez été déconnecter"
   });
 };
@@ -56,7 +56,7 @@ loginRetirer();
 function publierChangement() {
   BtnPublierChangement.addEventListener("click", function() {
     sessionStorage.removeItem("accessToken");
-    window.location.href = "home_page.html";
+    window.location.href = "index.html";
   })
 };
 // appel de la fonction loginRetirer
