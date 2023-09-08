@@ -33,12 +33,14 @@ main {
 }
 header {
 	display: flex;
-	width: 100%;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: start;
+    width: 100%;
 	
 }
 section {
 	display:flex;
-	
 }
 
 h1{
@@ -88,15 +90,26 @@ h2 {
 	font-size: 30px;
 	color: #1D6154; 
 	justify-content: center;
+	padding: 10Px;
+}
+b {
+	color: #000;
+	text-align: center;
+	font-family: Work Sans;
+	font-size: 16px;
+	font-style: normal;
+	font-weight: 700; 
 }
 nav a {
 	display: flex;
 	text-decoration: none;
+	
 }
 nav {
 	display: flex;
 	width: 100%;
-	
+	height: 42px;
+	justify-content: flex-end;
 
 }
 nav div {
@@ -107,6 +120,7 @@ nav div {
 
 }
 nav h4 {
+	display: flex;
 	color: #000;
 	text-align: center;
 	font-family: Work Sans;
@@ -191,9 +205,6 @@ h4:hover {
 #contact {
 	display: flex;
 	flex-direction: column;
-	width: 100%;
-	justify-content: center;
-	
 }
 #contact > * {
 	text-align: center;
@@ -201,50 +212,49 @@ h4:hover {
 p#mon-ancre {
 	display: flex;
 	justify-content: center;
+	padding: 10px;
 }
 #contact h2{
 	display: flex;
 	margin-bottom: 20px;
 }
 #contact form {
-	text-align: left;
-	margin-top: 25px;
-	padding-left: 410px;
-	width: 100%;
 	display: flex;
 	flex-direction: column;
+	
 	justify-content: center;
-}
+	gap: 15px;
+	margin: 0px 25%;
+	}	
 
 input {
-	width: 379px;
+	display: flex;
 	height: 51px;
 	font-size: 1.2em;
 	border: none;
 	box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.09);
 }
 #contact label {
-	margin: 2em 0 1em 0;
-	
-	width: 379px;
-}
+	display:flex;
+}	
 #contact textarea {
+	display: flex;
 	border: none;
 	box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.09);
-	
-	width: 379px;
 }
 
 input[type="submit"]{
+	display: flex;
 	font-family: 'Syne';
 	font-weight: 700;
 	color: white;
 	background-color: #1D6154;
-	margin : 2em 100px;
-	width: 180px;
 	height: 36px;
-	text-align: center;
-	border-radius: 60px ;
+	width: 180px;
+	justify-content: center;
+	border-radius: 60px;
+	margin: 40px 35%;
+	
 }
 #envoyer-contact.imput {
 	width: 180px;
@@ -265,7 +275,8 @@ ul {
 }
 #mention-legale {
 	display:flex;
-	padding-left: 1000px;
+	flex-wrap: nowrap;
+	padding-left: 80%;
 	color: #000;
 	font-family: Work Sans;
 	font-size: 14px;
@@ -304,8 +315,7 @@ button:hover, button:active, #btnTous:hover, #btnTous:active {
 div.filterBar {
 	display: flex;
 	width: 100%;
-	padding: 0px 125px;
-	gap:10px;
+	 gap:10px;
 	justify-items: center;
 	margin: 50px 35px;
 	justify-content: center;
@@ -347,7 +357,7 @@ div.filterBar {
 	line-height: normal;
 	height: 36px;
 	width: 100%;
-	padding: 2px 20px;
+	padding: 2px 100px;
 }
 .loguin {
 	display:flex;
@@ -363,11 +373,11 @@ div.filterBar {
 	width: 100%;
 	gap: 10px;
 	justify-content: center;
+	padding: 0px 65px;
 }
 #email {
 	justify-content: center;
 	align-items: center;
-	width: 379px;
 	height: 51px;
 	color: #3D3D3D;
 	font-family: Work Sans;
@@ -381,7 +391,6 @@ div.filterBar {
 #password {
 	justify-content: center;
 	align-items: center;
-	width: 379px;
 	height: 51px;
 	color: #3D3D3D;
 	font-family: Work Sans;
@@ -392,7 +401,7 @@ div.filterBar {
 	background: #FFF;
 	box-shadow: 0px 4px 14px 0px rgba(0, 0, 0, 0.09);
 }
-#seConnecter.imput {
+#seConnecter button  {
 	height: 36px;
 	width: 179px;
 	margin: 1em;
@@ -406,6 +415,8 @@ div.filterBar {
 }
 #oublier {
 	display: flex;
+	flex-wrap: nowrap;
+	width: 100%;
 	color: #3D3D3D;
 	font-family: Work Sans;
 	font-size: 14px;
@@ -413,7 +424,7 @@ div.filterBar {
 	font-weight: 500;
 	line-height: normal;
 	text-decoration-line: underline;
-	justify-content: center;
+	padding: 0px 151px;
 }
 .popup p {
 	display: flex;
@@ -570,13 +581,12 @@ p {
 	border-radius: 60px;
 	background: #FFF;
 	align-items: center;
-	padding: 23px;
+	justify-content: center;
 	
 	
 }
 .frame {
 	display: flex;
-	width: 1140px;
 	height: 42px;
 	gap: 766px;
 }
@@ -655,7 +665,7 @@ i.fa-solid.fa-pen-to-square {
 	color: #FFF;
 	justify-content: center;
 	padding: 6px 6px;
-	margin: 15px 182px;
+	margin: 15px 228px;
 }
 #btn-ajouter-photos:hover, #btn-ajouter-photos:active {
 	background-color: #1D6154;
@@ -664,7 +674,7 @@ i.fa-solid.fa-pen-to-square {
 	position: absolute;
 	width: 10px;
 	height: 11px;
-	top: 235px;
+	top: 115px;
 	right: 544px;
 	background:black;
 	color:white;
@@ -709,7 +719,7 @@ i.fa-solid.fa-pen-to-square {
 	line-height: normal;
 	background-color: white;
 	border-color: white;
-	margin: 0px 156px;
+	margin: 0px 207px;
 	padding: 20px 35px;
 }
 /******** modale 2 **********************************/
@@ -842,7 +852,7 @@ input.modal2formulaire {
 	display:flex;
 	width: 237px;
 	height: 36px;
-	margin: 0px 164px;
+	margin: 33px 198px;
 	padding: 6px 88px;
 	background-color: #A7A7A7;
 	color: #FFF;
@@ -852,9 +862,8 @@ input.modal2formulaire {
 	display:flex;
 	width: 237px;
 	height: 36px;
-	margin: 0px 164px;
+	margin: 45px 164px;
 	padding: 6px 88px;
-	
 	text-align: center;
 	font-family: Syne;
 	font-size: 14px;
@@ -955,4 +964,10 @@ img#icone-image {
 }
 #logout {
 	cursor: pointer;
+}
+#ligne2 {
+	padding: 0px 92px;
+    width: 420px;
+    color: #3D3D3D;
+	
 }

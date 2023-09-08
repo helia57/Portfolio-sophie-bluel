@@ -46,7 +46,7 @@ function loginRetirer() {
 // ecoute du bouton du bouton "logout" et suppression du token. 
   BtnLogout.addEventListener("click", function() {
     sessionStorage.removeItem("accessToken");
-    window.location.href = "home page.html";
+    window.location.href = "home_page.html";
     return error.innerText ="vous avez été déconnecter"
   });
 };
@@ -56,7 +56,7 @@ loginRetirer();
 function publierChangement() {
   BtnPublierChangement.addEventListener("click", function() {
     sessionStorage.removeItem("accessToken");
-    window.location.href = "home page.html";
+    window.location.href = "home_page.html";
   })
 };
 // appel de la fonction loginRetirer
@@ -64,7 +64,7 @@ publierChangement();
 
 
 /************************************ */
-// fonction generer galerie modal     */
+// structure de la galerie modal     */
 /************************************ */
 modalTriggers.forEach(trigger => trigger.addEventListener("click", toggleModal))
 function toggleModal(e) {
@@ -278,17 +278,17 @@ async function supprimerProjet(id) {
         location.reload()
         return error1.innerText =("Projet supprimé avec succès.");
         
-        
+        // gestion des erreurs.
       } else {	
         return error1.innerText =("Erreur lors de la suppression.");	
       }	
 
 
-
+      // gestion des erreurs Try
   } catch (error) {	
       console.error("Erreur:", error);	
       return error1.innerText = " problème de connexion API.";	
-  }};	
+}};	
   
 
 //************************************************************************
@@ -360,7 +360,6 @@ const envoyerImageEtDonnees = async (imageFile, titre, category) => {
         });
         
           if (!response.ok) {
-              
             return error.innerText ="Erreur lors de l'envoi des données";
           }
 
